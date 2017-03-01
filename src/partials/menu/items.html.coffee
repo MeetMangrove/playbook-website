@@ -33,7 +33,6 @@ items.forEach (item) ->
 			# Title
 			h3 ".list-#{type}-title.no-anchor", {property: 'dc:title'}, -> h(title)
 
-			# Date
 			if showDate and moment
 				span ".list-#{type}-date", {property: 'dc:date'}, ->
 					moment(date).format(dateFormat)

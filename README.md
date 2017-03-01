@@ -1,16 +1,8 @@
-# [DocPad's Website](http://docpad.org), built with [DocPad](http://docpad.org)
+# [Mangrove Playbook's Website](https://playbook.mangrove.io), built with [DocPad](https://docpad.org)
 
 <!-- BADGES/ -->
 
-<span class="badge-travisci"><a href="http://travis-ci.org/docpad/website" title="Check this project's build status on TravisCI"><img src="https://img.shields.io/travis/docpad/website/master.svg" alt="Travis CI Build Status" /></a></span>
-<br class="badge-separator" />
-<span class="badge-slackin"><a href="https://slack.bevry.me" title="Join this project's slack community"><img src="https://slack.bevry.me/badge.svg" alt="Slack community badge" /></a></span>
-<span class="badge-patreon"><a href="http://patreon.com/bevry" title="Donate to this project using Patreon"><img src="https://img.shields.io/badge/patreon-donate-yellow.svg" alt="Patreon donate button" /></a></span>
-<span class="badge-gratipay"><a href="https://www.gratipay.com/bevry" title="Donate weekly to this project using Gratipay"><img src="https://img.shields.io/badge/gratipay-donate-yellow.svg" alt="Gratipay donate button" /></a></span>
-<span class="badge-flattr"><a href="https://flattr.com/profile/balupton" title="Donate to this project using Flattr"><img src="https://img.shields.io/badge/flattr-donate-yellow.svg" alt="Flattr donate button" /></a></span>
-<span class="badge-paypal"><a href="https://bevry.me/paypal" title="Donate to this project using Paypal"><img src="https://img.shields.io/badge/paypal-donate-yellow.svg" alt="PayPal donate button" /></a></span>
-<span class="badge-bitcoin"><a href="https://bevry.me/bitcoin" title="Donate once-off to this project using Bitcoin"><img src="https://img.shields.io/badge/bitcoin-donate-yellow.svg" alt="Bitcoin donate button" /></a></span>
-<span class="badge-wishlist"><a href="https://bevry.me/wishlist" title="Buy an item on our wishlist for us"><img src="https://img.shields.io/badge/wishlist-donate-yellow.svg" alt="Wishlist browse button" /></a></span>
+<span class="badge-travisci"><a href="http://travis-ci.org/meetmangrove/playbook-website" title="Check this project's build status on TravisCI"><img src="https://img.shields.io/travis/meetmangrove/playbook-website/master.svg" alt="Travis CI Build Status" /></a></span>
 
 <!-- /BADGES -->
 
@@ -22,20 +14,30 @@
 1. Clone and run the server
 
 	``` bash
-	git clone https://github.com/docpad/website.git docpad-website
-	cd docpad-website
+	git clone https://github.com/meetmangrove/playbook-website.git playbook-website
+	cd playbook-website
 	npm install
 	docpad run
 	```
 
 1. [Open http://localhost:9778/](http://localhost:9778/)
 
-1. Start hacking away by modifying the `src` directory
+1. Start hacking away by modifying the `docpad.js` file and the `src` directory
 
 
-## Update the Documentation
+### Deployment
 
-The DocPad documentation is stored in a [separate repository](https://github.com/bevry/docpad-documentation) which is pulled into this website at run-time. You'll want to edit the documentation repo instead if you want to make changes to the documentation.
+To deploy to [surge.sh](https://surge.sh):
+
+```
+npm test  # to generate the site
+npm run deploy  # to deploy the site
+```
+
+
+## Update the Content
+
+The content is stored in a [separate repository](https://github.com/meetmangrove/playbook) which is pulled into this website at run-time. You'll want to edit the documentation repo instead if you want to make changes to the documentation.
 
 
 <!-- LICENSE/ -->

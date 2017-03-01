@@ -1,9 +1,0 @@
-<!---
-layout: structure
---->
-
-<section id="content">
-	<article class="splash">
-		<%- @content %>
-	</article>
-</section>

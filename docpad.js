@@ -1,16 +1,16 @@
 /* eslint camelcase:0 */
 'use strict'
 
-// Require
-const moment = require('moment')
+// Import
 const strUtil = require('underscore.string')
-const fsUtil = require('fs')
-const pathUtil = require('path')
+const websiteVersion = require('./package.json').version
 
 // Prepare
+const siteUrl = process.env.NODE_ENV === 'production' ? 'https://playbook.mangrove.io' : 'http://localhost:9778'
+
 const textData = {
-	heading: 'DocPad',
-	copyright: 'DocPad is a <a href="http://bevry.me" title="Bevry - An open company and community dedicated to empowering developers everywhere.">Bevry</a> creation.',
+	heading: 'Mangrove Playbook',
+	copyright: 'Copyright CC-BY 4.0',
 
 	linkNames: {
 		main: 'Website',
@@ -23,42 +23,29 @@ const textData = {
 	},
 
 	projectNames: {
-		docpad: 'DocPad',
-		node: 'Node.js',
-		queryengine: 'Query Engine'
+		playbook: 'Mangrove Playbook'
 	},
 
 	categoryNames: {
-		start: 'Getting Started',
-		community: 'Community',
-		core: 'Core',
-		extend: 'Extend',
-		handsonnode: 'Hands on with Node'
+		welcome: 'Welcome to Playbook',
+		rules: 'The Rules',
+		how: 'How To\'s',
+		faq: 'FAQs'
 	}
 }
 
 const navigationData = {
 	top: {
-		Intro: '/docs/intro',
-		Install: '/docs/install',
-		Start: '/docs/begin',
-		Showcase: '/docs/showcase',
-		Plugins: '/docs/plugins',
-		Documentation: '/docs/'
+		Mangrove: '/',
+		GitHub: 'https://github.com/meetmangrove'
 	},
 
 	bottom: {
-		DocPad: '/',
-		GitHub: 'https://github.com/docpad/docpad',
-		Support: '/support'
+		Playbook: '/',
+		Mangrove: 'https://mangrove.io',
+		GitHub: 'https://github.com/meetmangrove'
 	}
 }
-
-const websiteVersion = require('./package.json').version
-const docpadVersion = require('./package.json').dependencies.docpad.toString().replace('~', '').replace('^', '')
-const exchangeUrl = `https://helper.docpad.org/exchange.cson?version=${docpadVersion}`
-const siteUrl = process.env.NODE_ENV === 'production' ? 'http://docpad.org' : 'http://localhost:9778'
-
 
 
 // =================================
@@ -66,7 +53,7 @@ const siteUrl = process.env.NODE_ENV === 'production' ? 'http://docpad.org' : 'h
 
 // Humanize
 function humanize (text = '') {
-	return require('underscore.string').humanize(
+	return strUtil.humanize(
 		text.replace(/^[-0-9]+/, '').replace(/\..+/, '')
 	)
 }
@@ -114,12 +101,6 @@ const docpadConfig = {
 
 		text: textData,
 		navigation: navigationData,
-		moment,
-		strUtil,
-
-		// The URL we use to fetch the exchange data, included in template data for debugging
-		exchangeUrl,
-
 
 		// -----------------------------
 		// Site Properties
@@ -129,13 +110,13 @@ const docpadConfig = {
 			url: siteUrl,
 
 			// The default title of our website
-			title: 'DocPad - Streamlined Web Development',
+			title: textData.heading,
 
 			// The website description (for SEO)
-			description: 'Empower your website frontends with layouts, meta-data, pre-processors (markdown, jade, coffeescript, etc.), partials, skeletons, file watching, querying, and an amazing plugin system. Use it either standalone, as a build script, or even as a module in a bigger system. Either way, DocPad will streamline your web development process allowing you to craft full-featured websites quicker than ever before.',
+			description: 'the mangrove playbook description',
 
 			// The website keywords (for SEO) separated by commas
-			keywords: 'bevry, bevryme, balupton, benjamin lupton, docpad, node, node.js, javascript, coffeescript, query engine, queryengine, backbone.js, cson',
+			keywords: 'mangrove, playbook',
 
 			// Styles
 			styles: [
@@ -187,31 +168,6 @@ const docpadConfig = {
 		getPreparedKeywords () {
 			// Merge the document keywords with the site keywords
 			this.site.keywords.concat(this.document.keywords || []).join(', ')
-		},
-
-		// Get Version
-		getVersion (v, places = 1) {
-			return v.split('.').slice(0, places).join('.')
-		},
-
-		// Read File
-		readFile (relativePath) {
-			/* eslint no-sync:0 */
-			const path = this.document.fullDirPath + '/' + relativePath
-			const result = fsUtil.readFileSync(path)
-			if ( result instanceof Error ) {
-				throw result
-			}
-			else {
-				return result.toString()
-			}
-		},
-
-		// Code File
-		codeFile (relativePath, language) {
-			language = language || pathUtil.extname(relativePath).substr(1)
-			const contents = this.readFile(relativePath)
-			return `<pre><code class="${language}">${contents}</code></pre>`
 		}
 	},
 
@@ -350,20 +306,6 @@ const docpadConfig = {
 			}
 		},
 
-		feedr: {
-			feeds: {
-				latestPackage: {
-					url: 'https://helper.docpad.org/latest.json',
-					parse: 'json'
-				},
-				exchange: {
-					url: exchangeUrl,
-					parse: 'cson'
-				}
-				// 'twitter-favorites': url: 'https://api.twitter.com/1.1/favorites/list.json?screen_name=docpad&count=200&include_entities=true'
-			}
-		},
-
 		downloader: {
 			downloads: [{
 				name: 'HTML5 Boilerplate',
@@ -382,9 +324,9 @@ const docpadConfig = {
 
 		repocloner: {
 			repos: [{
-				name: 'DocPad Documentation',
-				path: 'src/documents/learn/docpad/documentation',
-				url: 'https://github.com/bevry/docpad-documentation.git'
+				name: 'Mangrove Playbook',
+				path: 'src/documents/learn/mangrove/playbook',
+				url: 'https://github.com/meetmangrove/playbook.git'
 			}]
 		},
 
@@ -394,72 +336,10 @@ const docpadConfig = {
 
 			// Common Redirects
 			simpleRedirects: {
-				'/license': 'https://github.com/docpad/docpad/blob/master/LICENSE.md#readme',
-				'/changelog': 'https://github.com/docpad/docpad/blob/master/HISTORY.md#readme',
-				'/changes': '/changelog',
-				'/history': '/changelog',
-				'/chat-logs': 'https://botbot.me/freenode/docpad/',
-				'/chat': 'https://discuss.bevry.me/tags/chat',
-				// use /support-channels, as there is a /support documentation page
-				'/support-channels': 'https://discuss.bevry.me/t/official-bevry-support-channels/63',
-				'/bug-report': '/support-channels',
-				'/forum': 'https://discuss.bevry.me/tags/docpad',
-				'/stackoverflow': 'https://discuss.bevry.me/t/official-stack-overflow-support/61/3',
-				'/donate': 'https://bevry.me/donate',
-				'/gittip-community': '/donate',
-				'/gittip': '/donate',
-				'/gratipay-community': '/donate',
-				'/gratipay': '/donate',
-				'/flattr': '/donate',
-				'/praise': 'https://twitter.com/docpad/favorites',
-				'/growl': 'http://growl.info/downloads',
-				'/partners': '/docs/support#support-consulting-partners',
-				'/docs/start': '/docs/begin',
-				'/get-started': '/docs/overview',
-				'/chat-guidelines': '/i/384',
-				'/unstable-node': '/i/725',
-				'/render-early-via-include': '/i/378',
-				'/extension-not-rendering': '/i/192',
-				'/plugin-conventions': '/i/313',
-				'/plugin-uncompiled': '/i/925',
-				'/twitter': 'https://twitter.com/docpad',
+				'/twitter': 'https://twitter.com/meetmangrove',
 				'/tweet': '/twitter',
 				'/t': '/twitter'
-			},
-
-			advancedRedirects: [
-				// Old URLs
-				[/^https?:\/\/(?:refresh\.docpad\.org|docpad\.herokuapp\.com|docpad\.github\.io\/website)(.*)$/, 'https://docpad.org$1'],
-
-				// Short Links
-				[/^\/(plugins|upgrade|install|troubleshoot)\/?$/, '/docs/$1'],
-
-				// Content
-				// /docpad[/#{relativeUrl}]
-				[/^\/docpad(?:\/(.*))?$/, '/docs/$1'],
-
-				// Bevry Content
-				[/^\/((?:tos|terms|privacy).*)$/, 'https://bevry.me/$1'],
-
-				// Learning Centre Content
-				[/^\/((?:node|joe|query-?engine).*)$/, 'https://learn.bevry.me/$1'],
-
-				// GitHub
-				// /(g|github|bevry/docpad)[/#{path}]
-				[/^\/(?:g|github|bevry\/docpad)(?:\/(.*))?$/, 'https://github.com/docpad/docpad/$1'],
-
-				// Issues
-				// /(i|issue)[/#{issue}]
-				[/^\/(?:i|issues)(?:\/(.*))?$/, 'https://github.com/docpad/docpad/issues/$1'],
-
-				// Plugins
-				// /(p|plugin)/#{pluginName}
-				[/^\/(?:p|plugin)\/(.+)$/, 'https://github.com/docpad/docpad-plugin-$1'],
-
-				// Plugins via Full (legacy)
-				// /(docs/)?docpad-plugin-#{pluginName}
-				[/^\/(?:docs\/)?docpad-plugin-(.+)$/, 'https://github.com/docpad/docpad-plugin-$1']
-			]
+			}
 		}
 	}
 

@@ -35,5 +35,5 @@ nav '.list-menu', ->
 				showDescription: false
 				showDate: false
 				partial: @partial
-				moment: @moment
+				# moment: @moment
 			})

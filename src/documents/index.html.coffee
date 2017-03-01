@@ -1,5 +1,5 @@
 ###
-title: "Documentation"
+title: "Mangrove Playbook"
 layout: "structure"
 standalone: true
 ###
@@ -12,13 +12,11 @@ section '#content', ->
 	div '.page.docs', ->
 		header ->
 			a '.permalink.hover-link', href: '/docs/', ->
-				h1 'Documentation'
+				h1 'Mangrove Playbook'
 
 		# Menu
 		text @partial('menu/menu.html.coffee',{
 			collection: docsCollection
 			activeItem: @document
 			partial: @partial
-			moment: @moment
-			getCategoryName: @getCategoryName
 		})

@@ -39,9 +39,6 @@ div '.topbar', ->
 			collection: docsCollection
 			activeItem: @document
 			partial: @partial
-			moment: @moment
-			underscore: @underscore
-			getCategoryName: @getCategoryName
 		})
 
 div '.mainbar', ->
