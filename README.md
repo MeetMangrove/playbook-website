@@ -46,7 +46,7 @@ The content is stored in a [separate repository](https://github.com/meetmangrove
 
 Unless stated otherwise all works are:
 
-<ul><li>Copyright &copy; <a href="http://bevry.me">Bevry Pty Ltd</a></li></ul>
+<ul><li>Copyright &copy; <a href="https://mangrove.io">Mangrove</a></li></ul>
 
 and licensed under:
 
