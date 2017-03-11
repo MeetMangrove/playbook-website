@@ -44,12 +44,14 @@ zoom($size)
 	zoom: $size
 
 // Fonts
-fontMyraid = "Myriad Pro", "Segoe WP", "Segoe UI", Segoe, Calibri, Helvetica, Arial
-fontMyraidBoldest = 700
-fontMyraidBold = 600
-fontMyraidNormal = 500
-fontMyraidLight = 500
-fontMyraidLightest = 500
+fontMain = "Proxima Nova", Helvetica, Arial, sans-serif;
+fontMainBoldest = 700
+fontMainBold = 600
+fontMainLight = 500
+fontMainLightest = 500
+fontMainNormal = 500
+fontMainSpacing = 0.02em;
+
 fontFutura = "futura-pt", Helvetica, Arial, sans-serif
 fontGeorgia = Georgia, Times, serif
 fontConsolas = Consolas, Menlo, Monaco, 'Source Code Pro', 'courier new', monospace, serif
@@ -71,9 +73,19 @@ colorLightBrown = #aaa
 colorLighterBrown = #dbdbdb
 colorLightestBrown = #f1f1f1
 
-colorLink = colorBlue
-colorAccent = colorDarkGold
-colorBackground = colorLightestBrown
+colorRed = #FF512F
+colorRedGradient = linear-gradient(to left, #FF512F, #DD2476);
+colorBackgroundDark = #2C3E50
+colorBackgroundContrast = #FFFFFF
+colorNormalFont = #5b5b5b
+colorWhite  = #FFFFFF
+
+
+colorLink = colorRed
+colorHeaderLink = colorRed
+colorNavLink = colorWhite
+colorAccent = colorRed
+colorBackground = colorWhite
 
 
 // ====================================
@@ -112,8 +124,9 @@ mixinIconAccountPointer()
 // Fonts
 
 .container
-	font-family: fontMyraid
-	font-smooth: always
+	font-family: fontMain
+	letter-spacing: fontMainSpacing
+	// font-smooth: always
 	-webkit-font-smoothing: antialiased
 	color-profile: sRGB
 	rendering-intent: auto
@@ -123,9 +136,10 @@ mixinIconAccountPointer()
 	h2
 	h3
 	h4
-		font-family: fontFutura
-		font-weight: fontMyraidNormal
-		text-transform: uppercase
+		font-family: fontMain
+		font-weight: fontMainNormal
+		letter-spacing: fontMainSpacing
+		// text-transform: uppercase
 
 .topbar .links
 .sidebar
@@ -133,9 +147,10 @@ mixinIconAccountPointer()
 .mainbar .btn
 .mainbar .providers
 .bottombar
-	font-family: fontMyraid
-	font-weight: fontMyraidNormal
-	text-transform: uppercase
+	font-family: fontMain
+	font-weight: fontMainNormal
+	letter-spacing: fontMainSpacing
+	// text-transform: uppercase
 
 .mainbar
 	code
@@ -152,7 +167,7 @@ a:not(.hover-link),.link
 	cursor: pointer
 	text-decoration: none
 	color: colorLink
-	font-weight: fontMyraidBold
+	font-weight: fontMainBold
 .hover-link
 	cursor: pointer
 	text-decoration: none
@@ -204,8 +219,10 @@ pre code
 // Global Styles
 
 body
-	background: colorBackground
-	color: colorDarkestBrown
+	background: colorWhite
+	color: colorNormalFont
+	font-family: fontMain
+	letter-spacing: fontMainSpacing
 
 blockquote
 	margin: 3em
@@ -249,8 +266,9 @@ nav li
 	height: 2.5em
 	z-index: 501
 
-	background: hsl(0, 0%, 95%)
-	border-bottom: 1px solid colorLightBrown
+	background: colorRed
+	color: colorNavLink
+	// border-bottom: 1px solid colorLightBrown
 	box-shadow: 0 1px 0 white
 
 	.topnav
@@ -298,7 +316,7 @@ nav li
 		padding-bottom: 2.5em
 
 		width: 200px
-		background: hsl(0, 0%, 95%)
+		background: colorWhite
 		border-right: 1px solid colorLightBrown
 		box-shadow: 0 1px 0 white
 
@@ -319,13 +337,13 @@ nav li
 			line-height: 1em
 			font-size: 1em
 			margin-right: 20px
-			color: colorDarkestBrown
+			color: colorNavLink
 			padding-bottom: 2px
 			border-bottom: 6px solid transparent
 
 			&:hover
 			&.active
-				border-color: colorLightGold
+				border-color: colorWhite
 				text-decoration: none
 
 		a.logo
@@ -413,25 +431,25 @@ nav li
 	// Link
 	.list-menu-link
 		border-left: 5px solid transparent
-		color: colorDarkestBrown
+		color: colorRed
 		display: inline-block
 		padding: 0.15em 0.5em
-		font-weight: fontMyraidBold
+		font-weight: fontMainBold
 
 	// Category
 	.list-menu-category > .list-menu-link .list-menu-title
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 
 	// Item
 	.list-menu-item .list-menu-link
 		text-transform: none
 		&:hover
-			color: colorDarkGold
+			color: colorRed
 
 	// Item Active
 	.list-menu-item.active .list-menu-link
-		font-weight: fontMyraidBold
-		color: colorDarkGold
+		font-weight: fontMainBold
+		color: colorRed
 
 // Sidebar
 .sidebar
@@ -441,13 +459,20 @@ nav li
 		.list-menu-categories
 			margin: 0.3em 0
 			// border-left: 2px solid colorLightGold
+			color: colorBackgroundDark
 
 		// Category
 		.list-menu-category
 			padding: 5px 0
 
+			.list-menu-link
+				color: colorRed
+
+			.list-menu-items .list-menu-link
+				color: colorBackgroundDark
+
 			&.active > .list-menu-link
-				border-color: colorLightGold
+				border-color: colorWhite
 			/*
 			&.inactive
 				.list-menu-items
@@ -482,15 +507,18 @@ nav li
 			margin: 0 2%
 			float: left
 			min-height: 350px
+			padding: 10px
+			// border: 1px solid #FF512F40
+			box-shadow: 1px 1px 1px 1px darken(colorWhite,10)
 
 			> .list-menu-link
 				padding: 0
 				border: none
-				color: colorDarkGold
+				color: colorRed
 				.list-menu-title
 					font-size: 1.5em
 					font-family: fontFutura
-					font-weight: fontMyraidNormal
+					font-weight: fontMainNormal
 
 		// Item Group
 		.list-menu-items
@@ -501,8 +529,8 @@ nav li
 			// Item
 			.list-menu-item
 				a
-					font-weight: fontMyraidBold
-					color: colorDarkestBrown
+					font-weight: fontMainBold
+					color: colorBackgroundDark
 
 		.list-menu-home
 			display: none
@@ -536,10 +564,10 @@ nav li
 	h1
 		margin-bottom: 0
 		font-size: 2.5em
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 
 	h2
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 		font-size: 1.8em
 		margin-top: 4em
 
@@ -561,12 +589,12 @@ nav li
 
 	a
 		color: colorLink
-		font-weight: fontMyraidBold
+		font-weight: fontMainBold
 		&:hover
 			text-decoration: underline
 
 	dl dt
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 	dl dd
 		margin: 0 0 1.4em 1.1em
 
@@ -603,7 +631,7 @@ nav li
 		height: 2em
 
 		a
-			font-weight: fontMyraidBoldest
+			font-weight: fontMainBoldest
 
 		.prev
 		.next
@@ -651,7 +679,7 @@ nav li
 	line-height: 2em
 
 	a
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 		&:hover
 			text-decoration: underline
 
