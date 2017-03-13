@@ -667,27 +667,10 @@ nav li
 // Write your responsive layout styles here
 // Below is merely an example of how this should work
 
-@media screen and (max-width: 1280px)
-	// Shrink features even more
-	.splash
-		.overview
-			li
-				font-size: 90%
-				.image
-					zoom(0.9)
-
 @media screen and (max-width: 1024px)
 	// Remove side padding
 	.container
 		width: 100%
-
-	// Shrink features even more
-	.splash
-		.overview
-			li
-				column(4)
-				display: inline-block
-				float: none
 
 	// Remove margin about the bottombar
 	.bottombar
@@ -719,13 +702,6 @@ nav li
 				width: 23%
 				margin: 0 1%
 
-	.splash
-		.overview
-			li
-				margin: 0 3%
-				.image
-					zoom(0.8)
-
 @media screen and (max-width: 768px)
 	// Reduce doc columns per row to 2
 	.docs
@@ -747,16 +723,6 @@ nav li
 		font-size: 95%
 		padding-left: 0
 		width: 100%
-	.splash
-		font-size: 80%
-		.overview
-			li
-				column(4)
-				display: inline-block
-				float: none
-				padding: 0 0 2em
-				.image
-					zoom(0.6)
 
 	.block
 		h2
@@ -773,20 +739,7 @@ nav li
 		.links
 			float: none
 
-
-@media screen and (max-width: 560px)
-	.splash
-		.overview
-			li
-				.image
-					zoom(0.5)
-
 @media screen and (max-width: 450px)
-	// Shrink features even more
-	.splash
-		section
-			margin: 2em 0
-
 	// Hide the links
 	.block-edit
 		display: none
@@ -806,10 +759,6 @@ nav li
 	// Adjust font sizes
 	.page
 		font-size: 90%
-	.splash
-		font-size: 65%
-		p
-			font-size: 130%
 	.block
 		h2
 			margin: 2.3em 0 1em
@@ -820,11 +769,6 @@ nav li
 
 
 @media screen and (max-width: 320px)
-	// Shrink features even more
-	.splash
-		.overview
-			margin: 0
-
 	// Reduce doc columns per row to 1
 	.docs
 		.list-menu
