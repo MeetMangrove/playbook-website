@@ -59,33 +59,36 @@ fontMonaco = Monaco, Menlo, Consolas, 'Source Code Pro', 'courier new', monospac
 
 // Colors
 colorBlue = #259dcf
-
-colorDarkGold = #998758
-colorGold = #b09e6e
-colorLightGold = #c0ae7e
-colorLighterGold = #e2d5b2
-colorLightestGold = #f2ead4
-
-colorDarkestBrown = #3e3e3e
-colorDarkBrown = #777
-colorBrown = #9f9f9f
-colorLightBrown = #aaa
-colorLighterBrown = #dbdbdb
-colorLightestBrown = #f1f1f1
-
-colorRed = #FF512F
+colorBlack = #000
+colorRed = #FF512F  // hsl(11, 90%, 55%)
 colorRedGradient = linear-gradient(to left, #FF512F, #DD2476);
-colorBackgroundDark = #2C3E50
-colorBackgroundContrast = #FFFFFF
-colorNormalFont = #5b5b5b
-colorWhite  = #FFFFFF
+colorWhite = #FFF
 
-
+// Contextual Colors
+colorBlockquote = colorRed
+colorBody = colorBlack
 colorLink = colorRed
+colorBlock = colorBlack
 colorHeaderLink = colorRed
 colorNavLink = colorWhite
 colorAccent = colorRed
-colorBackground = colorWhite
+colorHeadingRow = colorAccent
+colorOddRow = colorBody
+colorCode = hsl(186, 8%, 15%)  // like  darkish black
+
+// Contextual Backgrounds
+backgroundBody = colorWhite
+backgroundMenu = colorRed
+backgroundBlock = colorWhite
+backgroundOddRow = #ccc
+backgroundHeadingRow = #ccc
+
+// Contextual Borders
+borderBlock = colorRed
+borderHeading = colorRed
+
+// Contextual Fonts
+fontCode = fontConsolas
 
 
 // ====================================
@@ -184,12 +187,11 @@ pre code
 .hljs
 	font-weight: 500
 	border-radius: 0.5em
-	background: colorLightestGold
-	color: hsl(186, 8%, 15%)
+	color: colorCode
 
 code
 	font-size: 0.75em
-	font-family: fontConsolas
+	font-family: fontCode
 
 	display: inline-block
 	padding: 0.05em 0.5em 0em
@@ -201,7 +203,7 @@ code
 pre code
 .hljs
 	font-size: 0.7em
-	font-family: fontMonaco
+	font-family: fontCode
 
 	display: block
 	margin: 2.5em 0
@@ -219,14 +221,14 @@ pre code
 // Global Styles
 
 body
-	background: colorWhite
-	color: colorNormalFont
+	background: backgroundBody
+	color: colorBody
 	font-family: fontMain
 	letter-spacing: fontMainSpacing
 
 blockquote
 	margin: 3em
-	color: hsl(11, 90%, 55%)
+	color: colorBlockquote
 	em
 		font-style: italic
 
@@ -238,21 +240,6 @@ em
 nav
 nav li
 	list-style: none
-
-.btn
-	background-color: colorLightGold
-	background-image: linear-gradient(top, colorLightGold, colorGold)
-	border: 2px solid white
-	border-radius: 3px
-	color: colorDarkestBrown !important
-	display: inline-block
-	margin: 1em auto
-	padding: 15px 30px
-	text-shadow: 1px 1px 0 rgba(white, .3)
-
-	&:hover
-		background-image: none
-		box-shadow: inset 1px 1px 2px rgba(black, .2)
 
 
 // ====================================
@@ -266,9 +253,8 @@ nav li
 	height: 2.5em
 	z-index: 501
 
-	background: colorRed
-	color: colorNavLink
-	// border-bottom: 1px solid colorLightBrown
+	background: backgroundMenu
+	color: colorMenu
 	box-shadow: 0 1px 0 white
 
 	.topnav
@@ -316,8 +302,8 @@ nav li
 		padding-bottom: 2.5em
 
 		width: 200px
-		background: colorWhite
-		border-right: 1px solid colorLightBrown
+		background: backgroundBlock
+		border-right: 1px solid borderBlock
 		box-shadow: 0 1px 0 white
 
 
@@ -343,7 +329,7 @@ nav li
 
 			&:hover
 			&.active
-				border-color: colorWhite
+				border-color: borderBlock
 				text-decoration: none
 
 		a.logo
@@ -367,26 +353,19 @@ nav li
 // ====================================
 // Splash Styles
 
-.splash
-.error
+.article.error
 	section
-		margin: 3em 0
+		margin: 0
 		padding: 1.5em 0
 		text-align: center
 
 	h1
 		font-size: 4em
+		margin-bottom: 0
 	h2
 		font-size: 2.5em
 	h3
 		font-size: 2.5em
-
-.error
-	section
-		margin: 0
-
-	h1
-		margin-bottom: 0
 
 	#goog-fixurl
 		.other-things
@@ -397,18 +376,6 @@ nav li
 		ul li
 			list-style: none
 
-.splash
-	p
-		color: colorDarkBrown
-		font-size: 1.1em
-		line-height: 1.6em
-		margin-left: auto
-		margin-right: auto
-		max-width: 50%
-
-	.btn
-		font-size: 1.5em
-
 
 // ====================================
 // Navigation
@@ -418,7 +385,7 @@ nav li
 	// Group
 	ul
 		padding: 0
-		marign: 0
+		margin: 0
 
 	// Title
 	.list-menu-title
@@ -431,7 +398,7 @@ nav li
 	// Link
 	.list-menu-link
 		border-left: 5px solid transparent
-		color: colorRed
+		color: colorNavLink
 		display: inline-block
 		padding: 0.15em 0.5em
 		font-weight: fontMainBold
@@ -444,12 +411,12 @@ nav li
 	.list-menu-item .list-menu-link
 		text-transform: none
 		&:hover
-			color: colorRed
+			color: colorNavLink
 
 	// Item Active
 	.list-menu-item.active .list-menu-link
 		font-weight: fontMainBold
-		color: colorRed
+		color: colorNavLink
 
 // Sidebar
 .sidebar
@@ -458,21 +425,20 @@ nav li
 		// Category Group
 		.list-menu-categories
 			margin: 0.3em 0
-			// border-left: 2px solid colorLightGold
-			color: colorBackgroundDark
+			color: backgroundBlock
 
 		// Category
 		.list-menu-category
 			padding: 5px 0
 
 			.list-menu-link
-				color: colorRed
+				color: colorBlock
 
 			.list-menu-items .list-menu-link
-				color: colorBackgroundDark
+				color: colorBlock
 
 			&.active > .list-menu-link
-				border-color: colorWhite
+				border-color: backgroundBlock
 			/*
 			&.inactive
 				.list-menu-items
@@ -509,12 +475,12 @@ nav li
 			min-height: 350px
 			padding: 10px
 			// border: 1px solid #FF512F40
-			box-shadow: 1px 1px 1px 1px darken(colorWhite,10)
+			box-shadow: 1px 1px 1px 1px darken(backgroundBlock,10)
 
 			> .list-menu-link
 				padding: 0
 				border: none
-				color: colorRed
+				color: colorBlock
 				.list-menu-title
 					font-size: 1.5em
 					font-family: fontFutura
@@ -523,14 +489,14 @@ nav li
 		// Item Group
 		.list-menu-items
 			padding: 1em 3%
-			background: white
+			background: backgroundBlock
 			border-radius: 3px
 
 			// Item
 			.list-menu-item
 				a
 					font-weight: fontMainBold
-					color: colorBackgroundDark
+					color: colorBlock
 
 		.list-menu-home
 			display: none
@@ -544,14 +510,14 @@ nav li
 	padding: 1.5em 0 1em /* top right bottom left */
 	a
 		transition: all 0.2s ease-out
-		color: colorDarkestBrown
+		color: colorBlack
 		opacity: 0.3
 		&:hover
 			opacity: 1
 
 .block
 	padding: 0.5em 3%
-	background: white
+	background: backgroundBlock
 	border-radius: 3px
 	word-wrap: break-word
 	overflow: hidden
@@ -584,7 +550,7 @@ nav li
 		margin-top: 2.5em
 
 	h2
-		border-bottom: 1px dotted colorLighterBrown
+		border-bottom: 1px dotted borderHeading
 
 
 	a
@@ -599,7 +565,6 @@ nav li
 		margin: 0 0 1.4em 1.1em
 
 	img
-		border: 2px solid colorLightestBrown
 		display: block
 		margin: 1em auto
 		max-width: 100%
@@ -614,14 +579,15 @@ nav li
 			padding: 0.8em
 
 		th
-			background: colorLightGold
-			color: white
+			background: backgroundHeadingRow
+			color: colorHeadingRow
 
 		tr:nth-child(2n+2)
-			background: colorLightestBrown
+			background: backgroundOddRow
+			color: colorOddRow
 
 	.block-footer
-		border-top: 1px dotted colorLighterBrown
+		border-top: 1px dotted borderBlock
 		margin: 5em 0 1.5em
 		padding-top: 1em
 		clearfix()
@@ -674,7 +640,7 @@ nav li
 .bottombar
 	font-size: 1em
 	border-top: 1px solid white
-	box-shadow: 0 -1px 0 colorLightBrown
+	box-shadow: 0 -1px 0 borderBlock
 	padding: 1em 0
 	line-height: 2em
 
@@ -691,7 +657,7 @@ nav li
 	.links
 		float: right
 		a
-			color: colorDarkestBrown
+			color: colorBlack
 			margin: 0 0.5em
 
 
