@@ -142,7 +142,6 @@ mixinIconAccountPointer()
 		font-family: fontMain
 		font-weight: fontMainNormal
 		letter-spacing: fontMainSpacing
-		// text-transform: uppercase
 
 .topbar .links
 .sidebar
@@ -153,12 +152,6 @@ mixinIconAccountPointer()
 	font-family: fontMain
 	font-weight: fontMainNormal
 	letter-spacing: fontMainSpacing
-	// text-transform: uppercase
-
-.mainbar
-	code
-	pre
-		text-transform: none
 
 
 // ------------------------------------
@@ -367,21 +360,20 @@ nav li
 	h3
 		font-size: 2.5em
 
-	#goog-fixurl
-		.other-things
-			margin: 2em 0 0
-			font-weight: normal !important
-
-		ul
-		ul li
-			list-style: none
-
 
 // ====================================
 // Navigation
 
 // Menu
 .list-menu
+	cursor: default
+	a
+		all: initial
+		color: colorLink
+		cursor: pointer
+		&:hover
+			text-decoration: underline
+
 	// Group
 	ul
 		padding: 0
@@ -393,12 +385,10 @@ nav li
 		margin: 0
 		font-weight: inherit
 		font-family: inherit
-		text-transform: inherit
 
 	// Link
 	.list-menu-link
 		border-left: 5px solid transparent
-		color: colorNavLink
 		display: inline-block
 		padding: 0.15em 0.5em
 		font-weight: fontMainBold
@@ -406,12 +396,6 @@ nav li
 	// Category
 	.list-menu-category > .list-menu-link .list-menu-title
 		font-weight: fontMainBoldest
-
-	// Item
-	.list-menu-item .list-menu-link
-		text-transform: none
-		&:hover
-			color: colorNavLink
 
 	// Item Active
 	.list-menu-item.active .list-menu-link
@@ -500,6 +484,13 @@ nav li
 
 		.list-menu-home
 			display: none
+
+.list-menu-project > .list-menu-title
+.list-menu-project > .list-menu-link
+	display:none
+.parentcrumbs
+	display: none
+
 
 // ====================================
 // Main Content
