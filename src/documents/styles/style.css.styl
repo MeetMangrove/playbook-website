@@ -44,12 +44,14 @@ zoom($size)
 	zoom: $size
 
 // Fonts
-fontMyraid = "Myriad Pro", "Segoe WP", "Segoe UI", Segoe, Calibri, Helvetica, Arial
-fontMyraidBoldest = 700
-fontMyraidBold = 600
-fontMyraidNormal = 500
-fontMyraidLight = 500
-fontMyraidLightest = 500
+fontMain = "Proxima Nova", Helvetica, Arial, sans-serif;
+fontMainBoldest = 700
+fontMainBold = 600
+fontMainLight = 500
+fontMainLightest = 500
+fontMainNormal = 500
+fontMainSpacing = 0.02em;
+
 fontFutura = "futura-pt", Helvetica, Arial, sans-serif
 fontGeorgia = Georgia, Times, serif
 fontConsolas = Consolas, Menlo, Monaco, 'Source Code Pro', 'courier new', monospace, serif
@@ -57,23 +59,36 @@ fontMonaco = Monaco, Menlo, Consolas, 'Source Code Pro', 'courier new', monospac
 
 // Colors
 colorBlue = #259dcf
+colorBlack = #000
+colorRed = #FF512F  // hsl(11, 90%, 55%)
+colorRedGradient = linear-gradient(to left, #FF512F, #DD2476);
+colorWhite = #FFF
 
-colorDarkGold = #998758
-colorGold = #b09e6e
-colorLightGold = #c0ae7e
-colorLighterGold = #e2d5b2
-colorLightestGold = #f2ead4
+// Contextual Colors
+colorBlockquote = colorRed
+colorBody = colorBlack
+colorLink = colorRed
+colorBlock = colorBlack
+colorHeaderLink = colorRed
+colorNavLink = colorWhite
+colorAccent = colorRed
+colorHeadingRow = colorAccent
+colorOddRow = colorBody
+colorCode = hsl(186, 8%, 15%)  // like  darkish black
 
-colorDarkestBrown = #3e3e3e
-colorDarkBrown = #777
-colorBrown = #9f9f9f
-colorLightBrown = #aaa
-colorLighterBrown = #dbdbdb
-colorLightestBrown = #f1f1f1
+// Contextual Backgrounds
+backgroundBody = colorWhite
+backgroundMenu = colorRed
+backgroundBlock = colorWhite
+backgroundOddRow = #ccc
+backgroundHeadingRow = #ccc
 
-colorLink = colorBlue
-colorAccent = colorDarkGold
-colorBackground = colorLightestBrown
+// Contextual Borders
+borderBlock = colorRed
+borderHeading = colorRed
+
+// Contextual Fonts
+fontCode = fontConsolas
 
 
 // ====================================
@@ -112,8 +127,9 @@ mixinIconAccountPointer()
 // Fonts
 
 .container
-	font-family: fontMyraid
-	font-smooth: always
+	font-family: fontMain
+	letter-spacing: fontMainSpacing
+	// font-smooth: always
 	-webkit-font-smoothing: antialiased
 	color-profile: sRGB
 	rendering-intent: auto
@@ -123,9 +139,9 @@ mixinIconAccountPointer()
 	h2
 	h3
 	h4
-		font-family: fontFutura
-		font-weight: fontMyraidNormal
-		text-transform: uppercase
+		font-family: fontMain
+		font-weight: fontMainNormal
+		letter-spacing: fontMainSpacing
 
 .topbar .links
 .sidebar
@@ -133,14 +149,9 @@ mixinIconAccountPointer()
 .mainbar .btn
 .mainbar .providers
 .bottombar
-	font-family: fontMyraid
-	font-weight: fontMyraidNormal
-	text-transform: uppercase
-
-.mainbar
-	code
-	pre
-		text-transform: none
+	font-family: fontMain
+	font-weight: fontMainNormal
+	letter-spacing: fontMainSpacing
 
 
 // ------------------------------------
@@ -152,7 +163,7 @@ a:not(.hover-link),.link
 	cursor: pointer
 	text-decoration: none
 	color: colorLink
-	font-weight: fontMyraidBold
+	font-weight: fontMainBold
 .hover-link
 	cursor: pointer
 	text-decoration: none
@@ -169,12 +180,11 @@ pre code
 .hljs
 	font-weight: 500
 	border-radius: 0.5em
-	background: colorLightestGold
-	color: hsl(186, 8%, 15%)
+	color: colorCode
 
 code
 	font-size: 0.75em
-	font-family: fontConsolas
+	font-family: fontCode
 
 	display: inline-block
 	padding: 0.05em 0.5em 0em
@@ -186,7 +196,7 @@ code
 pre code
 .hljs
 	font-size: 0.7em
-	font-family: fontMonaco
+	font-family: fontCode
 
 	display: block
 	margin: 2.5em 0
@@ -204,12 +214,14 @@ pre code
 // Global Styles
 
 body
-	background: colorBackground
-	color: colorDarkestBrown
+	background: backgroundBody
+	color: colorBody
+	font-family: fontMain
+	letter-spacing: fontMainSpacing
 
 blockquote
 	margin: 3em
-	color: hsl(11, 90%, 55%)
+	color: colorBlockquote
 	em
 		font-style: italic
 
@@ -221,21 +233,6 @@ em
 nav
 nav li
 	list-style: none
-
-.btn
-	background-color: colorLightGold
-	background-image: linear-gradient(top, colorLightGold, colorGold)
-	border: 2px solid white
-	border-radius: 3px
-	color: colorDarkestBrown !important
-	display: inline-block
-	margin: 1em auto
-	padding: 15px 30px
-	text-shadow: 1px 1px 0 rgba(white, .3)
-
-	&:hover
-		background-image: none
-		box-shadow: inset 1px 1px 2px rgba(black, .2)
 
 
 // ====================================
@@ -249,8 +246,8 @@ nav li
 	height: 2.5em
 	z-index: 501
 
-	background: hsl(0, 0%, 95%)
-	border-bottom: 1px solid colorLightBrown
+	background: backgroundMenu
+	color: colorMenu
 	box-shadow: 0 1px 0 white
 
 	.topnav
@@ -298,8 +295,8 @@ nav li
 		padding-bottom: 2.5em
 
 		width: 200px
-		background: hsl(0, 0%, 95%)
-		border-right: 1px solid colorLightBrown
+		background: backgroundBlock
+		border-right: 1px solid borderBlock
 		box-shadow: 0 1px 0 white
 
 
@@ -319,13 +316,13 @@ nav li
 			line-height: 1em
 			font-size: 1em
 			margin-right: 20px
-			color: colorDarkestBrown
+			color: colorNavLink
 			padding-bottom: 2px
 			border-bottom: 6px solid transparent
 
 			&:hover
 			&.active
-				border-color: colorLightGold
+				border-color: borderBlock
 				text-decoration: none
 
 		a.logo
@@ -349,47 +346,19 @@ nav li
 // ====================================
 // Splash Styles
 
-.splash
-.error
+.article.error
 	section
-		margin: 3em 0
+		margin: 0
 		padding: 1.5em 0
 		text-align: center
 
 	h1
 		font-size: 4em
+		margin-bottom: 0
 	h2
 		font-size: 2.5em
 	h3
 		font-size: 2.5em
-
-.error
-	section
-		margin: 0
-
-	h1
-		margin-bottom: 0
-
-	#goog-fixurl
-		.other-things
-			margin: 2em 0 0
-			font-weight: normal !important
-
-		ul
-		ul li
-			list-style: none
-
-.splash
-	p
-		color: colorDarkBrown
-		font-size: 1.1em
-		line-height: 1.6em
-		margin-left: auto
-		margin-right: auto
-		max-width: 50%
-
-	.btn
-		font-size: 1.5em
 
 
 // ====================================
@@ -397,10 +366,18 @@ nav li
 
 // Menu
 .list-menu
+	cursor: default
+	a
+		all: initial
+		color: colorLink
+		cursor: pointer
+		&:hover
+			text-decoration: underline
+
 	// Group
 	ul
 		padding: 0
-		marign: 0
+		margin: 0
 
 	// Title
 	.list-menu-title
@@ -408,30 +385,22 @@ nav li
 		margin: 0
 		font-weight: inherit
 		font-family: inherit
-		text-transform: inherit
 
 	// Link
 	.list-menu-link
 		border-left: 5px solid transparent
-		color: colorDarkestBrown
 		display: inline-block
 		padding: 0.15em 0.5em
-		font-weight: fontMyraidBold
+		font-weight: fontMainBold
 
 	// Category
 	.list-menu-category > .list-menu-link .list-menu-title
-		font-weight: fontMyraidBoldest
-
-	// Item
-	.list-menu-item .list-menu-link
-		text-transform: none
-		&:hover
-			color: colorDarkGold
+		font-weight: fontMainBoldest
 
 	// Item Active
 	.list-menu-item.active .list-menu-link
-		font-weight: fontMyraidBold
-		color: colorDarkGold
+		font-weight: fontMainBold
+		color: colorNavLink
 
 // Sidebar
 .sidebar
@@ -440,14 +409,20 @@ nav li
 		// Category Group
 		.list-menu-categories
 			margin: 0.3em 0
-			// border-left: 2px solid colorLightGold
+			color: backgroundBlock
 
 		// Category
 		.list-menu-category
 			padding: 5px 0
 
+			.list-menu-link
+				color: colorBlock
+
+			.list-menu-items .list-menu-link
+				color: colorBlock
+
 			&.active > .list-menu-link
-				border-color: colorLightGold
+				border-color: backgroundBlock
 			/*
 			&.inactive
 				.list-menu-items
@@ -482,30 +457,40 @@ nav li
 			margin: 0 2%
 			float: left
 			min-height: 350px
+			padding: 10px
+			// border: 1px solid #FF512F40
+			box-shadow: 1px 1px 1px 1px darken(backgroundBlock,10)
 
 			> .list-menu-link
 				padding: 0
 				border: none
-				color: colorDarkGold
+				color: colorBlock
 				.list-menu-title
 					font-size: 1.5em
 					font-family: fontFutura
-					font-weight: fontMyraidNormal
+					font-weight: fontMainNormal
 
 		// Item Group
 		.list-menu-items
 			padding: 1em 3%
-			background: white
+			background: backgroundBlock
 			border-radius: 3px
 
 			// Item
 			.list-menu-item
 				a
-					font-weight: fontMyraidBold
-					color: colorDarkestBrown
+					font-weight: fontMainBold
+					color: colorBlock
 
 		.list-menu-home
 			display: none
+
+.list-menu-project > .list-menu-title
+.list-menu-project > .list-menu-link
+	display:none
+.parentcrumbs
+	display: none
+
 
 // ====================================
 // Main Content
@@ -516,14 +501,14 @@ nav li
 	padding: 1.5em 0 1em /* top right bottom left */
 	a
 		transition: all 0.2s ease-out
-		color: colorDarkestBrown
+		color: colorBlack
 		opacity: 0.3
 		&:hover
 			opacity: 1
 
 .block
 	padding: 0.5em 3%
-	background: white
+	background: backgroundBlock
 	border-radius: 3px
 	word-wrap: break-word
 	overflow: hidden
@@ -536,10 +521,10 @@ nav li
 	h1
 		margin-bottom: 0
 		font-size: 2.5em
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 
 	h2
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 		font-size: 1.8em
 		margin-top: 4em
 
@@ -556,22 +541,21 @@ nav li
 		margin-top: 2.5em
 
 	h2
-		border-bottom: 1px dotted colorLighterBrown
+		border-bottom: 1px dotted borderHeading
 
 
 	a
 		color: colorLink
-		font-weight: fontMyraidBold
+		font-weight: fontMainBold
 		&:hover
 			text-decoration: underline
 
 	dl dt
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 	dl dd
 		margin: 0 0 1.4em 1.1em
 
 	img
-		border: 2px solid colorLightestBrown
 		display: block
 		margin: 1em auto
 		max-width: 100%
@@ -586,14 +570,15 @@ nav li
 			padding: 0.8em
 
 		th
-			background: colorLightGold
-			color: white
+			background: backgroundHeadingRow
+			color: colorHeadingRow
 
 		tr:nth-child(2n+2)
-			background: colorLightestBrown
+			background: backgroundOddRow
+			color: colorOddRow
 
 	.block-footer
-		border-top: 1px dotted colorLighterBrown
+		border-top: 1px dotted borderBlock
 		margin: 5em 0 1.5em
 		padding-top: 1em
 		clearfix()
@@ -603,7 +588,7 @@ nav li
 		height: 2em
 
 		a
-			font-weight: fontMyraidBoldest
+			font-weight: fontMainBoldest
 
 		.prev
 		.next
@@ -646,12 +631,12 @@ nav li
 .bottombar
 	font-size: 1em
 	border-top: 1px solid white
-	box-shadow: 0 -1px 0 colorLightBrown
+	box-shadow: 0 -1px 0 borderBlock
 	padding: 1em 0
 	line-height: 2em
 
 	a
-		font-weight: fontMyraidBoldest
+		font-weight: fontMainBoldest
 		&:hover
 			text-decoration: underline
 
@@ -663,7 +648,7 @@ nav li
 	.links
 		float: right
 		a
-			color: colorDarkestBrown
+			color: colorBlack
 			margin: 0 0.5em
 
 
@@ -673,27 +658,10 @@ nav li
 // Write your responsive layout styles here
 // Below is merely an example of how this should work
 
-@media screen and (max-width: 1280px)
-	// Shrink features even more
-	.splash
-		.overview
-			li
-				font-size: 90%
-				.image
-					zoom(0.9)
-
 @media screen and (max-width: 1024px)
 	// Remove side padding
 	.container
 		width: 100%
-
-	// Shrink features even more
-	.splash
-		.overview
-			li
-				column(4)
-				display: inline-block
-				float: none
 
 	// Remove margin about the bottombar
 	.bottombar
@@ -725,13 +693,6 @@ nav li
 				width: 23%
 				margin: 0 1%
 
-	.splash
-		.overview
-			li
-				margin: 0 3%
-				.image
-					zoom(0.8)
-
 @media screen and (max-width: 768px)
 	// Reduce doc columns per row to 2
 	.docs
@@ -753,16 +714,6 @@ nav li
 		font-size: 95%
 		padding-left: 0
 		width: 100%
-	.splash
-		font-size: 80%
-		.overview
-			li
-				column(4)
-				display: inline-block
-				float: none
-				padding: 0 0 2em
-				.image
-					zoom(0.6)
 
 	.block
 		h2
@@ -779,20 +730,7 @@ nav li
 		.links
 			float: none
 
-
-@media screen and (max-width: 560px)
-	.splash
-		.overview
-			li
-				.image
-					zoom(0.5)
-
 @media screen and (max-width: 450px)
-	// Shrink features even more
-	.splash
-		section
-			margin: 2em 0
-
 	// Hide the links
 	.block-edit
 		display: none
@@ -812,10 +750,6 @@ nav li
 	// Adjust font sizes
 	.page
 		font-size: 90%
-	.splash
-		font-size: 65%
-		p
-			font-size: 130%
 	.block
 		h2
 			margin: 2.3em 0 1em
@@ -826,11 +760,6 @@ nav li
 
 
 @media screen and (max-width: 320px)
-	// Shrink features even more
-	.splash
-		.overview
-			margin: 0
-
 	// Reduce doc columns per row to 1
 	.docs
 		.list-menu
