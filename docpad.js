@@ -119,7 +119,7 @@ const docpadConfig = {
 		repocloner: {
 			repos: [{
 				name: 'Mangrove Playbook',
-				path: 'src/documents/learn/mangrove/playbook',
+				path: 'src/documents/learn/mangrove-playbook/playbook',
 				url: 'https://github.com/meetmangrove/playbook.git'
 			}]
 		},
@@ -149,6 +149,7 @@ helpers({
 		},
 		projects: {
 			playbook: {
+				editUrl: 'https://github.com/meetmangrove/playbook/edit/master/',
 				title: 'Mangrove Playbook',
 				categories: {
 					welcome: {
