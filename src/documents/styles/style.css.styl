@@ -10,6 +10,18 @@ standalone: true
 // nib: https://github.com/tj/nib
 @import 'nib'
 
+
+@font-face {
+  font-family: 'proximasemibold';
+  src: url('proximanova-semibold-webfont')  format('truetype');
+}
+
+@font-face {
+  font-family: 'proximaregular';
+  src: url('proximanova-regular-webfont')  format('truetype');
+}
+
+
 // ====================================
 // Responsive Layout Awesomeness
 // https://gist.github.com/1549029
@@ -44,13 +56,15 @@ zoom($size)
 	zoom: $size
 
 // Fonts
-fontMain = "Proxima Nova", Helvetica, Arial, sans-serif;
+fontMain = "proximaregular", Helvetica, Arial, sans-serif;
 fontMainBoldest = 700
 fontMainBold = 600
 fontMainLight = 500
 fontMainLightest = 500
 fontMainNormal = 500
 fontMainSpacing = 0.02em;
+
+fontTitle = "proximasemibold", Helvetica, Arial, sans-serif;
 
 fontFutura = "futura-pt", Helvetica, Arial, sans-serif
 fontGeorgia = Georgia, Times, serif
@@ -60,7 +74,7 @@ fontMonaco = Monaco, Menlo, Consolas, 'Source Code Pro', 'courier new', monospac
 // Colors
 colorBlue = #259dcf
 colorBlack = #000
-colorRed = #FF512F  // hsl(11, 90%, 55%)
+colorRed = #ED3954  // hsl(11, 90%, 55%)
 colorRedGradient = linear-gradient(to left, #FF512F, #DD2476);
 colorWhite = #FFF
 
@@ -139,8 +153,7 @@ mixinIconAccountPointer()
 	h2
 	h3
 	h4
-		font-family: fontMain
-		font-weight: fontMainNormal
+		font-family: fontTitle
 		letter-spacing: fontMainSpacing
 
 .topbar .links
@@ -243,7 +256,7 @@ nav li
 	top: 0
 	left: 0
 	width: 100%
-	height: 2.5em
+	height: 11%
 	z-index: 501
 
 	background: backgroundMenu
@@ -251,7 +264,8 @@ nav li
 	box-shadow: 0 1px 0 white
 
 	.topnav
-		height: 2.5em
+		margin-top: 1.5em
+		margin-left: 2em
 		word-wrap: break-word
 		overflow: hidden
 
@@ -268,6 +282,10 @@ nav li
 	height: 100vh
 	width: 100vw
 	padding-bottom: 2.5em
+	background-color: #F6F8FA
+
+.contentbar
+	background-color: #F6F8FA
 
 .bottombar
 	margin-top: 3em
@@ -287,7 +305,7 @@ nav li
 	padding-right: 20px
 	z-index: 500
 	word-wrap: break-word
-	transition: all 0.3s ease-in
+	font: fontTitle
 
 	.list-menu
 		overflow: auto
@@ -296,8 +314,7 @@ nav li
 
 		width: 200px
 		background: backgroundBlock
-		border-right: 1px solid borderBlock
-		box-shadow: 0 1px 0 white
+		box-shadow: 0px 7px 14px #ececec;
 
 
 // ====================================
@@ -383,27 +400,25 @@ nav li
 	.list-menu-title
 		font-size: 1em
 		margin: 0
-		font-weight: inherit
-		font-family: inherit
+		font-family: fontTitle
 
 	// Link
 	.list-menu-link
 		border-left: 5px solid transparent
 		display: inline-block
 		padding: 0.15em 0.5em
-		font-weight: fontMainBold
 
 	// Category
 	.list-menu-category > .list-menu-link .list-menu-title
-		font-weight: fontMainBoldest
 
 	// Item Active
 	.list-menu-item.active .list-menu-link
-		font-weight: fontMainBold
 		color: colorNavLink
 
 // Sidebar
 .sidebar
+	ul
+		font-family: fontTitle
 	// Menu
 	.list-menu
 		// Category Group
@@ -419,7 +434,7 @@ nav li
 				color: colorBlock
 
 			.list-menu-items .list-menu-link
-				color: colorBlock
+				color: #969696
 
 			&.active > .list-menu-link
 				border-color: backgroundBlock
@@ -440,6 +455,7 @@ nav li
 			transition: max-height 0.5s ease-out
 			height: auto
 			max-height: 300px
+			font-family: fontTitle
 
 // Documentation Index Page
 .docs
@@ -491,6 +507,9 @@ nav li
 .parentcrumbs
 	display: none
 
+.list-menu-projects
+	margin: 1em 0em 0em 1em;
+
 
 // ====================================
 // Main Content
@@ -508,10 +527,16 @@ nav li
 
 .block
 	padding: 0.5em 3%
-	background: backgroundBlock
+	margin: 6% 14%
 	border-radius: 3px
 	word-wrap: break-word
 	overflow: hidden
+
+	.block-content
+		background-color: white
+		padding: 4% 8%
+		margin-top: 5%
+		border-radius: 15px
 
 	.section-wrapper
 		display:none
@@ -522,6 +547,7 @@ nav li
 		margin-bottom: 0
 		font-size: 2.5em
 		font-weight: fontMainBoldest
+		text-align: center
 
 	h2
 		font-weight: fontMainBoldest
@@ -534,7 +560,6 @@ nav li
 
 	h3
 		font-size: 1.5em
-		margin-top: 3em
 
 	h4
 		font-size: 1.2em
@@ -578,8 +603,7 @@ nav li
 			color: colorOddRow
 
 	.block-footer
-		border-top: 1px dotted borderBlock
-		margin: 5em 0 1.5em
+		margin: 0.8em 0 1.5em
 		padding-top: 1em
 		clearfix()
 
@@ -588,7 +612,8 @@ nav li
 		height: 2em
 
 		a
-			font-weight: fontMainBoldest
+			font: fontTitle
+			color: #1B1B1B
 
 		.prev
 		.next
