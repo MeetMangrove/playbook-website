@@ -13,13 +13,14 @@ standalone: true
 
 @font-face {
   font-family: 'proximasemibold';
-  src: url('proximanova-semibold-webfont')  format('truetype');
+  src: url('proximanova-semibold-webfont.ttf')  format('truetype');
 }
 
 @font-face {
   font-family: 'proximaregular';
-  src: url('proximanova-regular-webfont')  format('truetype');
+  src: url('proximanova-regular-webfont.ttf')  format('truetype');
 }
+
 
 
 // ====================================
@@ -234,7 +235,9 @@ body
 
 blockquote
 	margin: 3em
-	color: colorBlockquote
+	background-color: #f6f8fa
+	padding: 2% 7%
+	border-radius: 10px;
 	em
 		font-style: italic
 
@@ -476,6 +479,9 @@ nav li
 			padding: 10px
 			// border: 1px solid #FF512F40
 			box-shadow: 1px 1px 1px 1px darken(backgroundBlock,10)
+			background-color: white
+			border-radius: 7px
+			padding: 4% 3%
 
 			> .list-menu-link
 				padding: 0
@@ -483,8 +489,7 @@ nav li
 				color: colorBlock
 				.list-menu-title
 					font-size: 1.5em
-					font-family: fontFutura
-					font-weight: fontMainNormal
+					font-family: fontMain
 
 		// Item Group
 		.list-menu-items
@@ -495,7 +500,7 @@ nav li
 			// Item
 			.list-menu-item
 				a
-					font-weight: fontMainBold
+					font-family: fontMain
 					color: colorBlock
 
 		.list-menu-home
