@@ -9,15 +9,13 @@
 
 ## Getting Started
 
-1. [Install DocPad](http://docpad.org/docs/install)
-
 1. Clone and run the server
 
 	``` bash
 	git clone https://github.com/meetmangrove/playbook-website.git playbook-website
 	cd playbook-website
 	npm install
-	docpad run
+	npm start
 	```
 
 1. [Open http://localhost:9778/](http://localhost:9778/)
