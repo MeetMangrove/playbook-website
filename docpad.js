@@ -160,9 +160,6 @@ helpers({
 					},
 					how: {
 						title: "How To's"
-					},
-					faq: {
-						title: 'FAQs'
 					}
 				}
 			}
