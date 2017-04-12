@@ -11,22 +11,22 @@
 
 1. Clone the playbook website
 
-	``` bash
-	git clone https://github.com/meetmangrove/playbook-website.git playbook-website
-	cd playbook-website
+  ``` bash
+  git clone https://github.com/meetmangrove/playbook-website.git playbook-website
+  cd playbook-website
   ```
 
 1. Install the website's dependencies
 
-	``` bash
-	npm install
-	```
+  ``` bash
+  npm install
+  ```
 
 1. Start the development server:
 
-	``` bash
-	npm start
-	```
+  ``` bash
+  npm start
+  ```
 
 1. [Open http://localhost:9778/](http://localhost:9778/)
 
