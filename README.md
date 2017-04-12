@@ -9,12 +9,22 @@
 
 ## Getting Started
 
-1. Clone and run the server
+1. Clone the playbook website
 
 	``` bash
 	git clone https://github.com/meetmangrove/playbook-website.git playbook-website
 	cd playbook-website
+  ```
+
+1. Install the website's dependencies
+
+  ``` bash
 	npm install
+  ```
+
+1. Start the development server:
+
+  ```
 	npm start
 	```
 
