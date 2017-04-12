@@ -18,13 +18,13 @@
 
 1. Install the website's dependencies
 
-  ``` bash
+	``` bash
 	npm install
-  ```
+	```
 
 1. Start the development server:
 
-  ```
+	``` bash
 	npm start
 	```
 
