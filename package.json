@@ -64,7 +64,7 @@
     "our:verify:coffeelint": "coffeelint ./src",
     "our:test": "npm run our:verify && npm test",
     "our:release": "npm run deploy",
-    "start": "docpad-server",
+    "start": "docpad run",
     "test": "docpad generate --silent --env static",
     "info": "docpad info --silent",
     "deploy": "surge --project ./out --domain https://playbook.mangrove.io"
