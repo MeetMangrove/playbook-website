@@ -33,6 +33,31 @@
 1. Start hacking away by modifying the `docpad.js` file and the `src` directory
 
 
+### Editing Structure
+
+A lot of the structure (like the menu listings and documentation page layouts) is provided by [bevry/outpatient](https://github.com/bevry/outpatient). To make changes to this:
+
+1. Clone outpatient (or your fork), install its dependencies, and link it for development
+
+    ``` bash
+    cd where/you/put/your/projects
+    git clone https://github.com/bevry/outpatient.git
+    cd outpatient
+    npm install  # install its deps
+    npm link  # link it for development
+    ```
+
+1. Then inside our website repo, tell it to use our local outpatient copy:
+
+    ``` bash
+    cd where/you/put/playbook-website
+    npm link outpatient  # pull in our local outpatient to use with the website
+    npm start
+    ```
+
+Modifications to outpatient will require running `npm start` again. When you are ready to push your changes up, contact [@balupton](https://github.com/balupton).
+
+
 ### Deployment
 
 To deploy to [surge.sh](https://surge.sh):
