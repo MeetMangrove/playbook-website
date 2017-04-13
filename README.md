@@ -57,11 +57,11 @@ A lot of the structure (like the menu listings and documentation page layouts) i
 
 Modifications to outpatient will require running `npm start` again. When you are ready to push your changes up, contact [@balupton](https://github.com/balupton).
 
-The file that probably interest you are:
+The files that probably interest you are:
 
-- [`source/documentation-layout.js`](https://github.com/bevry/outpatient/blob/master/source/documentation-layout.js)
-- [`source/block.js`](https://github.com/bevry/outpatient/blob/master/source/block.js)
-- [`source/menu.js`](https://github.com/bevry/outpatient/blob/master/source/menu.js)
+- [`outpatient/source/documentation-layout.js`](https://github.com/bevry/outpatient/blob/master/source/documentation-layout.js)
+- [`outpatient/source/block.js`](https://github.com/bevry/outpatient/blob/master/source/block.js)
+- [`outpatient/source/menu.js`](https://github.com/bevry/outpatient/blob/master/source/menu.js)
 
 Outpatient uses [hyperscript](https://github.com/hyperhype/hyperscript) as its rendering engine.
 
