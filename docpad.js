@@ -75,17 +75,13 @@ const docpadConfig = {
 			// Styles
 			styles: [
 				'/vendor/normalize.css',
-				'/vendor/h5bp.css',
-				'/vendor/highlight.css',
 				'/styles/style.css'
 			].map(function (url) {
 				return `${url}?websiteVersion=${websiteVersion}`
 			}),
 
 			// Script
-			scripts: [
-				'//cdnjs.cloudflare.com/ajax/libs/anchor-js/3.2.2/anchor.min.js'
-			]
+			scripts: []
 		},
 
 		services: {
@@ -102,17 +98,9 @@ const docpadConfig = {
 	plugins: {
 		downloader: {
 			downloads: [{
-				name: 'HTML5 Boilerplate',
-				path: 'src/raw/vendor/h5bp.css',
-				url: 'https://rawgit.com/h5bp/html5-boilerplate/5.3.0/dist/css/main.css'
-			}, {
 				name: 'Normalize CSS',
 				path: 'src/raw/vendor/normalize.css',
 				url: 'https://rawgit.com/h5bp/html5-boilerplate/5.3.0/dist/css/normalize.css'
-			}, {
-				name: 'Highlight.js XCode Theme',
-				path: 'src/raw/vendor/highlight.css',
-				url: 'https://rawgit.com/isagalaev/highlight.js/8.0/src/styles/xcode.css'
 			}]
 		},
 

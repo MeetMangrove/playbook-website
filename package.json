@@ -35,11 +35,9 @@
     "docpad-plugin-coffeescript": "~2.5.0",
     "docpad-plugin-downloader": "~2.2.0",
     "docpad-plugin-eco": "~2.1.0",
-    "docpad-plugin-highlightjs": "~2.4.0",
     "docpad-plugin-marked": "~2.3.0",
     "docpad-plugin-raw": "~2.4.1",
     "docpad-plugin-repocloner": "~2.2.2",
-    "docpad-plugin-stylus": "~2.13.0",
     "docpad-plugin-text": "~2.3.3",
     "outpatient": "^3.0.0",
     "underscore.string": "^3.3.4"
