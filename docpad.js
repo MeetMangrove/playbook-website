@@ -5,7 +5,7 @@
 const helpers = require('outpatient')
 
 // Prepare
-const websiteVersion = require('./package.json').version
+const websiteVersion = (new Date()).getTime()  /* set the website version for caching to be the current deploy time */
 const siteUrl = process.env.NODE_ENV === 'production' ? 'https://playbook.mangrove.io' : 'http://localhost:9778'
 
 
