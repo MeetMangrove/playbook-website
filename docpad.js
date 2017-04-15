@@ -80,7 +80,7 @@ const docpadConfig = {
 		repocloner: {
 			repos: [{
 				name: 'Mangrove Playbook',
-				path: 'src/documents/learn/mangrove-playbook/playbook',
+				path: 'src/documents/learn/meetmangrove-playbook/playbook',
 				url: 'https://github.com/meetmangrove/playbook.git'
 			}]
 		},
