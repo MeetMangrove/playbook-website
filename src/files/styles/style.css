@@ -37,10 +37,10 @@ standalone: true
 
 	--headingFont: "proximasemibold", Helvetica, Arial, sans-serif;
 	--headingFontLight: var(--bodyFont);
-	--headingBackground: var(--colorRed);
-	--headingColor: var(--colorLight);
 
-	--blockquoteColor: var(--colorRed);
+	--menuBackground: var(--colorRed);
+	--menuColor: var(--colorLight);
+
 	--borderColor: var(--colorGrey4);
 	--accentColor: var(--colorRed);
 
@@ -101,13 +101,14 @@ a:hover, .link:hover {
 /* misc */
 blockquote {
 	margin: 3em;
-	color: var(--blockquoteColor);
+	color: var(--accentColor);
 }
 blockquote em {
 	font-style: italic;
 }
 em {
 	font-style: italic;
+	color: var(--accentColor);
 }
 nav,
 nav li {
@@ -129,13 +130,13 @@ html, body, div, nav, section, aside, article {
 	z-index: 2;
 	height: var(--barSize);
 	border-bottom: 1px solid var(--borderColor);
-	background: var(--headingBackground);
-	color: var(--headingColor);
+	background: var(--menuBackground);
+	color: var(--menuColor);
 	top: 0;
 	left: 0;
 }
 .topbar a {
-	color: var(--headingColor) !important;
+	color: var(--menuColor) !important;
 }
 .sidebar {
 	box-sizing: content-box;
@@ -387,13 +388,23 @@ input.gsc-search-button {
 	padding: calc(var(--barSize) / 2) 0;
 	text-align: center;
 }
+.block-header h1 {
+	color: var(--accentColor);
+	margin-bottom: 0.4em;
+}
+.block-header h2 {
+	margin: 0 auto;
+	max-width: 75%;
+	font-family: var(--headingFontLight);
+	font-size: 1rem;
+}
 .block-content {
 	padding: calc(var(--paddingSize) / 2) var(--paddingSize);
 	overflow-y: auto;
 	padding-bottom: 5em;
 }
 .block-footer {
-	margin: 1em 2em;
+	margin: 1em 0;
 }
 .block-edit a {
 	position: absolute;
@@ -407,8 +418,8 @@ input.gsc-search-button {
 
 .prev-next {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-areas: "prev up next";
+	grid-template-columns: 1fr 1fr;
+	grid-template-areas: "prev next";
 }
 .prev {
 	grid-area: prev;
@@ -416,10 +427,21 @@ input.gsc-search-button {
 .up {
 	text-align: center;
 	grid-area: up;
+	display: none;
 }
 .next {
 	text-align: right;
 	grid-area: next;
+}
+.prev:hover,
+.up:hover,
+.next:hover {
+	text-decoration: none;
+}
+.prev:hover .title,
+.up:hover .title,
+.next:hover .title {
+	text-decoration: underline;
 }
 .prev-next .icon {
 	display: block;
@@ -454,7 +476,7 @@ input.gsc-search-button {
 	}
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
 	.sidebar {
 		left: calc(var(--sidebarSize) * -1);
 	}
