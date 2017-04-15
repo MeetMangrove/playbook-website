@@ -2,15 +2,6 @@
 standalone: true
 ***/
 
-// Coded in Stylus: http://stylus-lang.com
-
-// ====================================
-// Imports
-
-// nib: https://github.com/tj/nib
-@import 'nib'
-
-
 @font-face {
   font-family: 'proximasemibold';
   src: url('/vendor/proximanova-semibold-webfont.ttf')  format('truetype');
@@ -21,783 +12,477 @@ standalone: true
   src: url('/vendor/proximanova-regular-webfont.ttf')  format('truetype');
 }
 
+:root {
+	--colorRed: #ED3954; /* hsl(11, 90%, 55%) */
+	--colorRedGradient: linear-gradient(to left, #FF512F, #DD2476);
+	--colorLight: white;
+	--colorDark: black;
+	--colorGrey1: #F6F8FA;
+	--colorGrey2: #ececec;
+	--colorGrey3: #ccc;
+	--colorGrey4: #aaa;
+
+	--barSize: 5rem;
+	--barContentSize: 2rem;
+	--paddingSize: 3rem;
+	--marginSize: 2rem;
+	--sidebarSize: 30%;
+	--fontMainSpacing: 0.02em;
+
+	--bodyFont: "proximaregular", Helvetica, Arial, sans-serif;
+	--bodyBackground: var(--colorGrey1);
+	--bodyColor: var(--colorDark);
+
+	--contentBackground: var(--colorLight);
+
+	--headingFont: "proximasemibold", Helvetica, Arial, sans-serif;
+	--headingFontLight: var(--bodyFont);
+	--headingBackground: var(--colorRed);
+	--headingColor: var(--colorLight);
+
+	--blockquoteColor: var(--colorRed);
+	--borderColor: var(--colorGrey4);
+	--accentColor: var(--colorRed);
+
+	--tableOddRow: var(--colorGrey1);
+	--tableHeader: var(--colorGrey1);
+
+}
+
+* {
+	box-sizing: border-box;
+}
+
+/* icons */
+.up > .icon::before {
+	content: '↑';
+}
+.down > .icon::before {
+	content: '↓';
+}
+.prev > .icon::before {
+	content: '←';
+}
+.next > .icon::before {
+	content: '→';
+}
+
+/* main */
+html {
+	font-family: var(--bodyFont);
+	background: var(--bodyBackground);
+	color: var(--bodyColor);
+	overflow-wrap: break-word;
+}
+html, body, div {
+	margin: 0;
+	padding: 0;
+}
+.topbar .links, h1, h2, h3, h4, h5, h6 {
+	font-family: var(--headingFont);
+}
+.topbar .secondary {
+	font-family: var(--headingFontLight);
+}
+
+/* links */
+a, .link  {
+	display: inline-block;
+	text-decoration: none;
+	cursor: pointer;
+	color: inherit;
+}
+a:hover, .link:hover {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* misc */
+blockquote {
+	margin: 3em;
+	color: var(--blockquoteColor);
+}
+blockquote em {
+	font-style: italic;
+}
+em {
+	font-style: italic;
+}
+nav,
+nav li {
+	list-style: none;
+}
+
 
-
-// ====================================
-// Responsive Layout Awesomeness
-// https://gist.github.com/1549029
-// Published under the "public domain" using the Creative Commons Zero - http://creativecommons.org/publicdomain/zero/1.0/
-
-// Everything
-*
-	// Make paddings be included within the width
-	box-sizing border-box
-
-// Provide our wrapper mixin
-// Contains our resize transition
-wrapper($site-width = 70%)
-	$site-margin = ((100% - $site-width) / 2)
-	margin-left: $site-margin
-	margin-right: $site-margin
-	transition: margin 0.3s ease-out
-	clearfix()
-
-// Provide our column mixin
-column($columns)
-	display: inline
-	float: left
-	width: (100/$columns)%
-
-
-// ====================================
-// Configuration
-
-// Helpers
-zoom($size)
-	zoom: $size
-
-// Fonts
-fontMain = "proximaregular", Helvetica, Arial, sans-serif;
-fontMainBoldest = 700
-fontMainBold = 600
-fontMainLight = 500
-fontMainLightest = 500
-fontMainNormal = 500
-fontMainSpacing = 0.02em;
-
-fontTitle = "proximasemibold", Helvetica, Arial, sans-serif;
-
-fontFutura = "futura-pt", Helvetica, Arial, sans-serif
-fontGeorgia = Georgia, Times, serif
-fontConsolas = Consolas, Menlo, Monaco, 'Source Code Pro', 'courier new', monospace, serif
-fontMonaco = Monaco, Menlo, Consolas, 'Source Code Pro', 'courier new', monospace, serif
-
-// Colors
-colorBlue = #259dcf
-colorBlack = #000
-colorRed = #ED3954  // hsl(11, 90%, 55%)
-colorRedGradient = linear-gradient(to left, #FF512F, #DD2476);
-colorWhite = #FFF
-
-// Contextual Colors
-colorBlockquote = colorRed
-colorBody = colorBlack
-colorLink = colorRed
-colorBlock = colorBlack
-colorHeaderLink = colorRed
-colorNavLink = colorWhite
-colorAccent = colorRed
-colorHeadingRow = colorAccent
-colorOddRow = colorBody
-colorCode = hsl(186, 8%, 15%)  // like  darkish black
-
-// Contextual Backgrounds
-backgroundBody = colorWhite
-backgroundMenu = colorRed
-backgroundBlock = colorWhite
-backgroundOddRow = #ccc
-backgroundHeadingRow = #ccc
-
-// Contextual Borders
-borderBlock = colorRed
-borderHeading = colorRed
-
-// Contextual Fonts
-fontCode = fontConsolas
-
-
-// ====================================
-// Mixins
-
-// Icons
-mixinIconPageUp()
-	&:before
-		content: '↑'
-mixinIconPageDown()
-	&:before
-		content: '↓'
-mixinIconPagePrev()
-	&:before
-		content: '←'
-mixinIconPageNext()
-	&:before
-		content: '→'
-mixinIconSectionUp()
-	&:before
-		content: '⇧'
-mixinIconSectionDown()
-	display: inline-block
-	transform: rotate(-180deg)
-	&:before
-		content: '⇧'
-mixinIconAccountPointer()
-	display: inline-block
-	transform: rotate(-180deg)
-	transition: all 0.5s
-	&:before
-		content: '▴'
-
-
-// ====================================
-// Fonts
-
-.container
-	font-family: fontMain
-	letter-spacing: fontMainSpacing
-	// font-smooth: always
-	-webkit-font-smoothing: antialiased
-	color-profile: sRGB
-	rendering-intent: auto
-	text-rendering: optimizeLegibility
-
-	h1
-	h2
-	h3
-	h4
-		font-family: fontTitle
-		letter-spacing: fontMainSpacing
-
-.topbar .links
-.sidebar
-.mainbar nav
-.mainbar .btn
-.mainbar .providers
-.bottombar
-	font-family: fontMain
-	font-weight: fontMainNormal
-	letter-spacing: fontMainSpacing
-
-
-// ------------------------------------
-// Links
-
-a
-	text-decoration: none
-a:not(.hover-link),.link
-	cursor: pointer
-	text-decoration: none
-	color: colorLink
-	font-weight: fontMainBold
-.hover-link
-	cursor: pointer
-	text-decoration: none
-	color: inherit
-a:hover,.hover-link:hover
-	text-decoration: underline
-
-
-// ------------------------------------
-// Code
-
-code
-pre code
-.hljs
-	font-weight: 500
-	border-radius: 0.5em
-	color: colorCode
-
-code
-	font-size: 0.75em
-	font-family: fontCode
-
-	display: inline-block
-	padding: 0.05em 0.5em 0em
-	margin: 0.4em 0.2em 0.2em 0
-	border: 1px solid hsl(186, 8%, 88%)
-
-	white-space: pre
-
-pre code
-.hljs
-	font-size: 0.7em
-	font-family: fontCode
-
-	display: block
-	margin: 2.5em 0
-	padding: 1em 1.5em
-	border: 1px solid hsl(192, 8%, 84%)
-
-	line-height: 1.5em
-
-	overflow: auto
-	// word-wrap: break-word
-	// white-space: pre-wrap
-
-
-// ====================================
-// Global Styles
-
-body
-	background: backgroundBody
-	color: colorBody
-	font-family: fontMain
-	letter-spacing: fontMainSpacing
-
-blockquote
-	margin: 3em
-	background-color: #f6f8fa
-	padding: 2% 7%
-	border-radius: 10px;
-	em
-		font-style: italic
-
-em
-	// color: colorAccent
-	// font-style: normal
-	font-style: italic
-
-nav
-nav li
-	list-style: none
-
-
-// ====================================
-// Layout and structure
-
-.topbar
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	height: 85px
-	z-index: 501
-
-	background: backgroundMenu
-	color: colorMenu
-	box-shadow: 0 1px 0 white
-
-	.topnav
-		margin-top: 1.5em
-		margin-left: 2em
-		word-wrap: break-word
-		overflow: hidden
-
-.topbar:hover .sidebar
-	left: 0
-	opacity: 1
-
-.mainbar
-	position: fixed
-	top: 2.5em
-	left: 0
-
-	overflow: auto
-	height: 100vh
-	width: 100vw
-	padding-bottom: 2.5em
-	background-color: #F6F8FA
-
-.contentbar
-	background-color: #F6F8FA
-
-.bottombar
-	margin-top: 3em
-
-.page
-	padding-top: 2em
-	margin: 0 auto
-	width: 90%
-	font-weight: 400
-	clearfix()
-
-.sidebar
-	position: fixed
-	top: 2.5em
-	left: -200px
-	width: 220px
-	padding-right: 20px
-	z-index: 500
-	word-wrap: break-word
-	font: fontTitle
-
-	.list-menu
-		overflow: auto
-		height: 100vh
-		padding-bottom: 2.5em
-
-		width: 200px
-		background: backgroundBlock
-		box-shadow: 0px 7px 14px #ececec;
-
-
-// ====================================
-// Main navigation
-
-.topbar
-	.search
-	.links
-	.links a
-		display: inline-block
-
-	.links
-		float: left
-		margin-top: 0.6em
-		a
-			line-height: 1em
-			font-size: 1em
-			margin-right: 20px
-			color: colorNavLink
-			padding-bottom: 2px
-			border-bottom: 6px solid transparent
-
-			&:hover
-			&.active
-				border-color: borderBlock
-				text-decoration: none
-
-		a.logo
-			margin-left: 10px
-			font-size: 1.25em
-			padding-bottom: 1px
-
-	.search
-		float: right
-		width: 25%
-		margin-top: 0.3em
-		margin-right: 0.5em
-		*
-			box-sizing: content-box
-		.gsc-control-cse
-			padding: 0
-			border: none
-			background: transparent
-
-
-// ====================================
-// Splash Styles
-
-.article.error
-	section
-		margin: 0
-		padding: 1.5em 0
-		text-align: center
-
-	h1
-		font-size: 4em
-		margin-bottom: 0
-	h2
-		font-size: 2.5em
-	h3
-		font-size: 2.5em
-
-
-// ====================================
-// Navigation
-
-// Menu
-.list-menu
-	cursor: default
-	a
-		all: initial
-		color: colorLink
-		cursor: pointer
-		&:hover
-			text-decoration: underline
-
-	// Group
-	ul
-		padding: 0
-		margin: 0
-
-	// Title
-	.list-menu-title
-		font-size: 1em
-		margin: 0
-		font-family: fontTitle
-
-	// Link
-	.list-menu-link
-		border-left: 5px solid transparent
-		display: inline-block
-		padding: 0.15em 0.5em
-
-	// Category
-	.list-menu-category > .list-menu-link .list-menu-title
-
-	// Item Active
-	.list-menu-item.active .list-menu-link
-		color: colorNavLink
-
-// Sidebar
-.sidebar
-	ul
-		font-family: fontTitle
-	// Menu
-	.list-menu
-		// Category Group
-		.list-menu-categories
-			margin: 0.3em 0
-			color: backgroundBlock
-
-		// Category
-		.list-menu-category
-			padding: 5px 0
-
-			.list-menu-link
-				color: colorBlock
-
-			.list-menu-items .list-menu-link
-				color: #969696
-
-			&.active > .list-menu-link
-				border-color: backgroundBlock
-			/*
-			&.inactive
-				.list-menu-items
-					max-height: 0
-			&:hover
-				.list-menu-items
-					max-height: 300px
-			*/
-
-		// Item Group
-		.list-menu-items
-			margin: 5px 0
-			padding-left: 1em
-			overflow: hidden
-			transition: max-height 0.5s ease-out
-			height: auto
-			max-height: 300px
-			font-family: fontTitle
-
-// Documentation Index Page
-.docs
-	// Menu
-	.list-menu
-		margin-top: 3em
-		//margin-left: -4%
-
-		// Category
-		.list-menu-category
-			display: inline-block
-			overflow: hidden
-			width: 21%
-			//margin-left: 4%
-			margin: 0 2%
-			float: left
-			min-height: 350px
-			padding: 10px
-			// border: 1px solid #FF512F40
-			box-shadow: 1px 1px 1px 1px darken(backgroundBlock,10)
-			background-color: white
-			border-radius: 7px
-			padding: 4% 3%
-
-			> .list-menu-link
-				padding: 0
-				border: none
-				color: colorBlock
-				.list-menu-title
-					font-size: 1.5em
-					font-family: fontMain
-
-		// Item Group
-		.list-menu-items
-			padding: 1em 3%
-			background: backgroundBlock
-			border-radius: 3px
-
-			// Item
-			.list-menu-item
-				a
-					font-family: fontMain
-					color: colorBlock
-
-		.list-menu-home
-			display: none
-
-.list-menu-project > .list-menu-title
-.list-menu-project > .list-menu-link
-	display:none
-.parentcrumbs
-	display: none
-
-.list-menu-projects
-	margin: 1em 0em 0em 1em;
-
-
-// ====================================
-// Main Content
-
-.block-edit
-	display: block
-	text-align: right
-	padding: 1.5em 0 1em /* top right bottom left */
-	a
-		transition: all 0.2s ease-out
-		color: colorBlack
-		opacity: 0.3
-		&:hover
-			opacity: 1
-
-.block
-	padding: 0.5em 3%
-	margin: 6% 14%
-	border-radius: 3px
-	word-wrap: break-word
-	overflow: hidden
-
-	.block-content
-		background-color: white
-		padding: 4% 8%
-		margin-top: 5%
-		border-radius: 15px
-
-	.section-wrapper
-		display:none
-		&.active
-			display:block
-
-	h1
-		margin-bottom: 0
-		font-size: 2.5em
-		font-weight: fontMainBoldest
-		text-align: center
-
-	h2
-		font-weight: fontMainBoldest
-		font-size: 1.8em
-		margin-top: 4em
-
-	.compact
-		h2
-			color: colorLink
-
-	h3
-		font-size: 1.5em
-
-	h4
-		font-size: 1.2em
-		margin-top: 2.5em
-
-	h2
-		border-bottom: 1px dotted borderHeading
-
-
-	a
-		color: colorLink
-		font-weight: fontMainBold
-		&:hover
-			text-decoration: underline
-
-	dl dt
-		font-weight: fontMainBoldest
-	dl dd
-		margin: 0 0 1.4em 1.1em
-
-	img
-		display: block
-		margin: 1em auto
-		max-width: 100%
-
-	table
-		font-size: 1em
-		margin: 2em 0
-		width: 100%
-
-		th
-		td
-			padding: 0.8em
-
-		th
-			background: backgroundHeadingRow
-			color: colorHeadingRow
-
-		tr:nth-child(2n+2)
-			background: backgroundOddRow
-			color: colorOddRow
-
-	.block-footer
-		margin: 0.8em 0 1.5em
-		padding-top: 1em
-		clearfix()
-
-	.prev-next
-		position: relative
-		height: 2em
-
-		a
-			font: fontTitle
-			color: #1B1B1B
-
-		.prev
-		.next
-		.up
-			display: block
-			position: absolute
-			bottom: 0
-			height: 2em
-			width: 33%
-			text-decoration: none
-			&:hover
-				opacity: 1
-				.title
-					text-decoration: underline
-			.icon
-				display: block
-				height: auto
-				width: auto
-
-		.prev
-			left: 0
-			text-align: left
-			.icon
-				mixinIconPagePrev()
-		.next
-			right: 0
-			text-align: right
-			.icon
-				mixinIconPageNext()
-		.up
-			left: 33%
-			text-align: center
-			.icon
-				mixinIconPageUp()
-
-
-// ====================================
-// Footer
-
-.bottombar
-	font-size: 1em
-	border-top: 1px solid white
-	box-shadow: 0 -1px 0 borderBlock
-	padding: 1em 0
-	line-height: 2em
-
-	a
-		font-weight: fontMainBoldest
-		&:hover
-			text-decoration: underline
-
-	.about
-		float: left
-		a
-			color: colorLink
-
-	.links
-		float: right
-		a
-			color: colorBlack
-			margin: 0 0.5em
-
-
-
-// ====================================
-// Layout: Responsive
-// Write your responsive layout styles here
-// Below is merely an example of how this should work
-
-@media screen and (max-width: 1024px)
-	// Remove side padding
-	.container
-		width: 100%
-
-	// Remove margin about the bottombar
-	.bottombar
-		margin-top: 2em
-		.about
-			margin-left: 2%
-		.links
-			margin-right: 2%
-
-@media screen and (max-width: 960px)
-	// Reduce doc columns
-	.docs
-		.list-menu
-			.list-menu-category
-				font-size: 90%
-				min-height: 300px
-
-@media screen and (max-width: 900px)
-	// Hide the search bar
-	.topbar
-		.search
-			display: none
-
-@media screen and (max-width: 830px)
-	// Reduce doc columns
-	.docs
-		.list-menu
-			.list-menu-category
-				width: 23%
-				margin: 0 1%
-
-@media screen and (max-width: 768px)
-	// Reduce doc columns per row to 2
-	.docs
-		.list-menu
-			.list-menu-category
-				width: 47%
-				margin: 1em 1.5%
-
-	// Remove top margin on the bottombar
-	.bottombar
-		margin-top: 0
-		.about
-		.links
-			margin: 0
-
-@media screen and (max-width: 650px)
-	// Adjust font sizes
-	.page
-		font-size: 95%
-		padding-left: 0
-		width: 100%
-
-	.block
-		h2
-			margin-top: 3em
-		h3
-			margin-top: 2.5em
-		h4
-			margin-top: 2.1em
-
-	// Make footer two rows
-	.bottombar
-		text-align: center
-		.about
-		.links
-			float: none
-
-@media screen and (max-width: 450px)
-	// Hide the links
-	.block-edit
-		display: none
-	.bottombar
-		.links
-			display: none
-
-	// Hide the links
-	.topbar
-		a.secondary
-			display: none
-
-	// Allow code blocks to break
-	code
-		word-wrap: break-word
-
-	// Adjust font sizes
-	.page
-		font-size: 90%
-	.block
-		h2
-			margin: 2.3em 0 1em
-		h3
-			margin: 2.2em 0 1em
-		h4
-			margin: 2.1em 0 1em
-
-
-@media screen and (max-width: 420px)
-	// Reduce doc columns per row to 1
-	.docs
-		.list-menu
-			.list-menu-category
-				width: 100%
-				margin: 1em 0
-				min-height: inherit
-
-	// Adjust font sizes
-	.prev-next .title
-		font-size: 70%
+/* ====================================
+   Layout */
+
+html, body, .container, .sidebar, .sidebar .list-menu {
+	height: 100%;
+}
+html, body, div, nav, section, aside, article {
+	width: 100%;
+}
+.topbar {
+	position: fixed;
+	z-index: 2;
+	height: var(--barSize);
+	border-bottom: 1px solid var(--borderColor);
+	background: var(--headingBackground);
+	color: var(--headingColor);
+	top: 0;
+	left: 0;
+}
+.topbar a {
+	color: var(--headingColor) !important;
+}
+.sidebar {
+	box-sizing: content-box;
+	position: fixed;
+	z-index: 1;
+	width: var(--sidebarSize);
+	padding-right: 20px;
+	top: 0;
+	left: 0;
+	transition: left 0.3s ease-in;
+}
+.sidebar > .list-menu {
+	overflow: auto;
+	background: var(--contentBackground);
+	box-shadow: 0px 7px 14px var(--colorGrey2);
+	border-right: 1px solid var(--colorGrey2);
+}
+.topbar:hover + .sidebar,
+.sidebar:hover {
+	/* we've added  ontouchstart="" to .container to get this to work on mobile
+	   http://stackoverflow.com/a/13080306/130638 */
+	left: 0;
+}
+.contentbar {
+	padding: var(--barSize) var(--paddingSize) 0;
+	box-shadow: 0 0 1px white;
+	padding-left: calc(var(--paddingSize) + var(--sidebarSize));
+}
+
+/* topbar */
+.topbar {
+	display: grid;
+	grid-template-columns: 1fr 250px;
+	grid-template-areas: "links search";
+}
+.topbar .search {
+	grid-area: search;
+	margin-top: calc((var(--barSize) - var(--barContentSize)) / 2);
+	padding-right: var(--paddingSize);
+}
+.links {
+	grid-area: links;
+	overflow: hidden;
+	line-height: var(--barContentSize);
+	font-size: var(--barContentSize);
+	line-height: 1em;
+	margin-top: calc((var(--barSize) - var(--barContentSize)) / 2);
+	margin-left: var(--paddingSize);
+}
+.topbar .primary:hover .text,
+.topbar .secondary:hover {
+	text-decoration: underline;
+}
+.topbar .logo {
+	height: 0.6em;
+	margin-bottom: -0.05em;
+}
+.topbar .primary {
+	text-transform: lowercase;
+}
+.topbar a.secondary {
+	font-size: 0.6em;
+	margin-left: 3%;
+}
+
+.topbar .search * {
+	box-sizing: content-box;
+}
+.gsc-control-cse {
+	padding: 0 !important;
+	border: none !important;
+	background: none !important;
+	border: none !important;
+}
+.gsc-input-box {
+	border-radius: 1em !important;
+}
+td.gsc-search-button {
+	display: none !important;
+}
+/*
+td.gsc-search-button {
+	background: #2c3e50 !important;
+	border: none !important;
+	border-radius: 1em !important;
+	width: 2em !important;
+	padding-right: 2px !important;
+	text-align: center !important;
+}
+input.gsc-search-button {
+	all: initial !important;
+}
+*/
+
+/* ====================================
+   Pages */
+
+/* hide sidebar on docs and landing page */
+.page-index .contentbar,
+.page-docs .contentbar {
+	background: var(--bodyBackground);
+	border-left: none;
+	padding-bottom: var(--barSize);
+}
+
+
+/* ====================================
+   Sidebar and Docs Menus */
+
+.list-menu {
+	cursor: default;
+}
+.list-menu ul,
+.list-menu li {
+	margin: 0;
+	padding: 0;
+}
+.list-menu a,
+.list-menu .active {
+	line-height: 1rem;
+	font-size: 1rem;
+}
+.list-menu .active .list-menu-title {
+	color: var(--accentColor) !important;
+}
+
+.sidebar .list-menu {
+	padding-top: calc(var(--barSize));
+}
+.list-menu-project > .list-menu-title {
+	display: none !important;
+}
+.sidebar .list-menu-category {
+	padding-top: calc(var(--marginSize) * 0.5);
+}
+.sidebar .list-menu-title {
+	display: block;
+	width: 100%;
+	font-weight: normal;
+}
+
+.sidebar ul ul .list-menu-title {
+	padding-left: var(--marginSize);
+	padding-right: calc(var(--marginSize) / 2);
+}
+.sidebar ul ul ul .list-menu-title {
+	padding-left: calc(var(--marginSize) * 1.7);
+	color: var(--colorGrey4);
+}
+
+.list-menu h1,
+.list-menu h2,
+.list-menu h3,
+.list-menu h4,
+.list-menu h5,
+.list-menu h6 {
+	margin: 0.2em 0;
+	padding: 0.2em 0;
+}
+
+.docs header {
+	display: none;
+}
+.docs .list-menu {
+	padding-top: calc(var(--barSize) / 2);
+}
+.docs .list-menu-title {
+	font-weight: normal;
+}
+.docs .list-menu-project > .list-menu-title {
+	display: none;
+}
+.docs .list-menu-categories {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--sidebarSize), 1fr));
+	grid-gap: calc(var(--marginSize) * 2);
+   justify-content: space-evenly;
+}
+.docs .list-menu-category {
+	grid-column: span 1;
+	grid-row: span 1;
+}
+.docs .list-menu-category > .list-menu-title a {
+	all: unset;
+}
+.docs .list-menu-items {
+	padding: var(--marginSize);
+	background: white;
+	border-radius: 3px;
+}
+
+
+/* ====================================
+   Error */
+
+.error section {
+	margin: 3em 0;
+	padding: 1.5em 0;
+	text-align: center;
+}
+.error h1 {
+	font-size: 4rem;
+}
+.error h2,
+.error h3 {
+	font-size: 2.5rem;
+}
+.error section {
+	margin: 0;
+}
+.error h1 {
+	margin-bottom: 0;
+}
+
+
+/* ====================================
+   Main Content */
+
+.parentcrumbs {
+	display: none;
+}
+
+
+.block table {
+	font-size: 1em;
+	margin: 2em 0;
+	width: 100%;
+}
+.block th,
+.block td {
+	padding: var(--marginSize);
+}
+.block th {
+	background: var(--tableHeader);
+	color: white;
+	font: var(--headingFont);
+	font-weight: bold;
+}
+.block tr:nth-child(2n+2) {
+	background: var(--tableOddRow);
+}
+
+.block {
+	line-height: 1.4em;
+}
+
+.block-header {
+	padding: calc(var(--barSize) / 2) 0;
+	text-align: center;
+}
+.block-content {
+	padding: calc(var(--paddingSize) / 2) var(--paddingSize);
+	overflow-y: auto;
+}
+.block-footer {
+	border-top: 1px dotted var(--borderColor);
+	margin: 5em 0 1em;
+	padding-top: 1em;
+}
+.block-edit {
+	margin-bottom: 1em;
+	text-align: right;
+}
+.block-edit a {
+	transition: all 0.2s ease-out;
+}
+
+.prev-next {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-areas: "prev up next";
+}
+.prev {
+	grid-area: prev;
+}
+.up {
+	text-align: center;
+	grid-area: up;
+}
+.next {
+	text-align: right;
+	grid-area: next;
+}
+.prev-next .icon {
+	display: block;
+}
+
+.block-content {
+	background: var(--contentBackground);
+	border-radius: 1em;
+}
+
+/* fix for anchor links */
+.block :target {
+	margin-top: 0;
+	padding-top: var(--barSize);
+}
+
+.block img {
+	border: 2px solid var(--borderColor);
+	display: block;
+	margin: 1em auto;
+}
+
+.block iframe,
+.block table,
+.block img {
+	max-width: 100%;
+}
+
+
+@media screen and (max-width: 800px) {
+	.sidebar {
+		left: calc(var(--sidebarSize) * -1);
+	}
+	.contentbar {
+		padding-left: var(--paddingSize);
+	}
+}
+
+
+@media screen and (max-width: 700px) {
+	.topbar .secondary {
+		display: none;
+	}
+	.gsc-results-wrapper-visible {
+		box-sizing: border-box !important;
+		top: 0 !important;
+		left: 0 !important;
+		width: 100% !important;
+		height: 100% !important;
+		padding: 2rem var(--paddingSize) !important;
+	}
+}
+
+
+@media screen and (max-width: 600px) {
+	body {
+		--paddingSize: 2rem;
+		--marginSize: 5px;
+	}
+	.block th,
+	.block td {
+		padding: var(--marginSize) 0;
+	}
+	.block-edit,
+	.up,
+	.bottombar .links {
+		display: none;
+	}
+}

@@ -25,38 +25,6 @@ const docpadConfig = {
 	templateData: {
 
 		// -----------------------------
-		// Misc
-
-		text: {
-			heading: 'Mangrove Playbook',
-			copyright: 'Copyright CC-BY 4.0',
-
-			linkNames: {
-				main: 'Website',
-				learn: 'Learn',
-				email: 'Email',
-				twitter: 'Twitter',
-
-				support: 'Support',
-				showcase: 'Showcase'
-			}
-		},
-
-		navigation: {
-			top: {
-				Mangrove: '/',
-				GitHub: 'https://github.com/meetmangrove'
-			},
-
-			bottom: {
-				Playbook: '/',
-				Mangrove: 'https://mangrove.io',
-				GitHub: 'https://github.com/meetmangrove'
-			}
-		},
-
-
-		// -----------------------------
 		// Site Properties
 
 		site: {
@@ -67,7 +35,7 @@ const docpadConfig = {
 			title: 'Mangrove Playbook',
 
 			// The website description (for SEO)
-			description: 'the mangrove playbook description',
+			// description: 'the mangrove playbook description',
 
 			// The website keywords (for SEO) separated by commas
 			keywords: 'mangrove, playbook',
@@ -85,7 +53,7 @@ const docpadConfig = {
 		},
 
 		services: {
-			// googleSearch: '000711355494423975011:mvl83obfzvq'
+			googleSearch: '000711355494423975011:zgfeo4oync4'
 		}
 
 	},

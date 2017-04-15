@@ -11,7 +11,7 @@
 	<meta name="keywords" content="<%= @getPreparedKeywords() %>" />
 
 	<!-- Icons -->
-	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="shortcut icon" href="/images/mangrove-playbook-logo.png" />
 
 	<!-- DocPad Meta -->
 	<%- @getBlock('meta').toHTML() %>
