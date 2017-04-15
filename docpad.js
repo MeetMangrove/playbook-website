@@ -24,6 +24,11 @@ const docpadConfig = {
 
 	templateData: {
 
+		text: {
+			edit: 'Improve'
+		},
+
+
 		// -----------------------------
 		// Site Properties
 
@@ -98,7 +103,7 @@ const docpadConfig = {
 helpers({
 	config: {
 		getUrl ({ categoryId, name }) {
-			return `/${categoryId}/${name}`
+			return `/${categoryId}/${name}`.replace(/_/g, '-')
 		},
 		docs: {
 			url: '/'

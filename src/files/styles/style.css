@@ -26,7 +26,7 @@ standalone: true
 	--barContentSize: 2rem;
 	--paddingSize: 3rem;
 	--marginSize: 2rem;
-	--sidebarSize: 30%;
+	--sidebarSize: 300px;
 	--fontMainSpacing: 0.02em;
 
 	--bodyFont: "proximaregular", Helvetica, Arial, sans-serif;
@@ -80,6 +80,7 @@ html, body, div {
 }
 .topbar .links, h1, h2, h3, h4, h5, h6 {
 	font-family: var(--headingFont);
+	font-weight: normal;
 }
 .topbar .secondary {
 	font-family: var(--headingFontLight);
@@ -163,6 +164,12 @@ html, body, div, nav, section, aside, article {
 	box-shadow: 0 0 1px white;
 	padding-left: calc(var(--paddingSize) + var(--sidebarSize));
 }
+.contentbar > article {
+	padding-bottom: 1em;
+	position: relative;
+	margin: 0 auto;
+	max-width: 800px;
+}
 
 /* topbar */
 .topbar {
@@ -208,6 +215,7 @@ html, body, div, nav, section, aside, article {
 	border: none !important;
 	background: none !important;
 	border: none !important;
+	color: black !important;
 }
 .gsc-input-box {
 	border-radius: 1em !important;
@@ -273,7 +281,6 @@ input.gsc-search-button {
 .sidebar .list-menu-title {
 	display: block;
 	width: 100%;
-	font-weight: normal;
 }
 
 .sidebar ul ul .list-menu-title {
@@ -301,27 +308,24 @@ input.gsc-search-button {
 .docs .list-menu {
 	padding-top: calc(var(--barSize) / 2);
 }
-.docs .list-menu-title {
-	font-weight: normal;
-}
 .docs .list-menu-project > .list-menu-title {
 	display: none;
 }
 .docs .list-menu-categories {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(var(--sidebarSize), 1fr));
-	grid-gap: calc(var(--marginSize) * 2);
-   justify-content: space-evenly;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-gap: var(--marginSize);
 }
 .docs .list-menu-category {
 	grid-column: span 1;
 	grid-row: span 1;
+	margin-bottom: var(--marginSize);
 }
 .docs .list-menu-category > .list-menu-title a {
 	all: unset;
 }
 .docs .list-menu-items {
-	padding: var(--marginSize);
+	padding: calc(var(--marginSize) * 0.5) var(--marginSize);
 	background: white;
 	border-radius: 3px;
 }
@@ -371,7 +375,6 @@ input.gsc-search-button {
 	background: var(--tableHeader);
 	color: white;
 	font: var(--headingFont);
-	font-weight: bold;
 }
 .block tr:nth-child(2n+2) {
 	background: var(--tableOddRow);
@@ -380,7 +383,6 @@ input.gsc-search-button {
 .block {
 	line-height: 1.4em;
 }
-
 .block-header {
 	padding: calc(var(--barSize) / 2) 0;
 	text-align: center;
@@ -388,18 +390,19 @@ input.gsc-search-button {
 .block-content {
 	padding: calc(var(--paddingSize) / 2) var(--paddingSize);
 	overflow-y: auto;
+	padding-bottom: 5em;
 }
 .block-footer {
-	border-top: 1px dotted var(--borderColor);
-	margin: 5em 0 1em;
-	padding-top: 1em;
-}
-.block-edit {
-	margin-bottom: 1em;
-	text-align: right;
+	margin: 1em 2em;
 }
 .block-edit a {
-	transition: all 0.2s ease-out;
+	position: absolute;
+	bottom: 7em;
+	right: 1em;
+	border: 1px solid var(--colorGrey4);
+	border-radius: 1em;
+	padding: 0.5em 1em;
+	color: var(--colorGrey4) !important;
 }
 
 .prev-next {
@@ -434,7 +437,6 @@ input.gsc-search-button {
 }
 
 .block img {
-	border: 2px solid var(--borderColor);
 	display: block;
 	margin: 1em auto;
 }
@@ -445,6 +447,12 @@ input.gsc-search-button {
 	max-width: 100%;
 }
 
+
+@media screen and (max-width: 1200px) {
+	.docs .list-menu-categories {
+		grid-template-columns: 1fr;
+	}
+}
 
 @media screen and (max-width: 800px) {
 	.sidebar {
@@ -457,6 +465,10 @@ input.gsc-search-button {
 
 
 @media screen and (max-width: 700px) {
+	body {
+		--paddingSize: 2rem;
+		--marginSize: 7%;
+	}
 	.topbar .secondary {
 		display: none;
 	}
@@ -473,8 +485,7 @@ input.gsc-search-button {
 
 @media screen and (max-width: 600px) {
 	body {
-		--paddingSize: 2rem;
-		--marginSize: 5px;
+		--paddingSize: 5%;
 	}
 	.block th,
 	.block td {

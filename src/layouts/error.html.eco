@@ -2,8 +2,6 @@
 layout: structure
 --->
 
-<section id="content">
-	<article class="error">
-		<%- @content %>
-	</article>
-</section>
+<article class="error">
+	<%- @content %>
+</article>
