@@ -62,7 +62,7 @@
     "start": "docpad run",
     "test": "docpad generate --silent --env static",
     "info": "docpad info --silent",
-    "deploy": "surge --project ./out --domain https://playbook.mangrove.io",
+    "deploy": "surge --project ./out --domain http://playbook.mangrove.io",
     "deploy:staging": "surge --project ./out --domain https://nosy-toy.surge.sh"
   }
 }
