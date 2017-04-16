@@ -63,6 +63,7 @@
     "test": "docpad generate --silent --env static",
     "info": "docpad info --silent",
     "deploy": "surge --project ./out --domain http://playbook.mangrove.io",
-    "deploy:staging": "surge --project ./out --domain https://nosy-toy.surge.sh"
+    "deploy:staging": "surge --project ./out --domain https://nosy-toy.surge.sh",
+    "release": "git push && npm test && npm run deploy && npm run deploy:staging"
   }
 }
