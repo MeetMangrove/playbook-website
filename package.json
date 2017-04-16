@@ -33,10 +33,10 @@
     "docpad": "~6.79.4",
     "docpad-plugin-cleanurls": "~2.8.1",
     "docpad-plugin-downloader": "~2.2.0",
-    "docpad-plugin-eco": "~2.1.0",
+    "docpad-plugin-eco": "~2.2.0",
     "docpad-plugin-marked": "~2.3.0",
     "docpad-plugin-raw": "~2.4.1",
-    "docpad-plugin-repocloner": "~2.2.2",
+    "docpad-plugin-repocloner": "~2.3.1",
     "outpatient": "^3.2.0",
     "underscore.string": "^3.3.4"
   },
