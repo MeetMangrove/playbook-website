@@ -21,6 +21,7 @@ standalone: true
 	--colorGrey2: #ececec;
 	--colorGrey3: #ccc;
 	--colorGrey4: #aaa;
+	--colorGrey5: #ddd;
 
 	--barSize: 5rem;
 	--barContentSize: 2rem;
@@ -113,6 +114,15 @@ em {
 nav,
 nav li {
 	list-style: none;
+}
+code {
+	background: var(--colorGrey1);
+	padding: 0.2em 0.35em;
+	border-radius: 3px;
+	margin: 0 0.1em;
+	font-size: 85%;
+	letter-spacing: -0.02em;
+	/* border: 1px solid var(--colorGrey5); */
 }
 
 
