@@ -3,14 +3,6 @@ layout: "structure"
 standalone: true
 --->
 
-<section id="content">
-	<div class="page docs">
-		<header>
-			<a class="permalink hover-link" href="/docs/">
-				<h1>Documentation</h1>
-			</a>
-		</header>
-
-		<%- @renderMenu({useAnchors: true, render: 'projects'}) %>
-	</div>
-</section>
+<article class="docs">
+	<%- @renderMenu({useAnchors: false, render: 'projects'}) %>
+</article>

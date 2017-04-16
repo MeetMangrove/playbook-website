@@ -196,9 +196,8 @@ html, body, div, nav, section, aside, article {
 .links {
 	grid-area: links;
 	overflow: hidden;
-	line-height: var(--barContentSize);
 	font-size: var(--barContentSize);
-	line-height: 1em;
+	line-height: var(--barContentSize);
 	margin-top: calc((var(--barSize) - var(--barContentSize)) / 2);
 	margin-left: var(--paddingSize);
 }
@@ -313,9 +312,6 @@ input.gsc-search-button {
 	padding: 0.2em 0;
 }
 
-.docs header {
-	display: none;
-}
 .docs .list-menu {
 	padding-top: calc(var(--barSize) / 2);
 }
@@ -372,7 +368,9 @@ input.gsc-search-button {
 	display: none;
 }
 
-
+article:not(.docs) {
+	line-height: 1.4em;
+}
 .block table {
 	font-size: 1em;
 	margin: 2em 0;
@@ -391,16 +389,14 @@ input.gsc-search-button {
 	background: var(--tableOddRow);
 }
 
-.block {
-	line-height: 1.4em;
-}
 .block-header {
 	padding: calc(var(--barSize) / 2) 0;
 	text-align: center;
 }
 .block-header h1 {
-	color: var(--accentColor);
 	margin-bottom: 0.4em;
+	line-height: 1.1em;
+	color: var(--accentColor);
 }
 .block-header h2 {
 	margin: 0 auto;
