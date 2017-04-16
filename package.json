@@ -41,9 +41,11 @@
     "underscore.string": "^3.3.4"
   },
   "devDependencies": {
+    "autoprefixer": "^6.7.7",
     "coffeelint": "^1.16.0",
     "docpad-plugin-livereload": "~2.9.0",
     "eslint": "^3.19.0",
+    "postcss-cli": "^3.1.1",
     "projectz": "^1.4.0",
     "surge": "^0.19.0"
   },
@@ -60,7 +62,7 @@
     "our:test": "npm run our:verify && npm test",
     "our:release": "npm run deploy",
     "start": "docpad run",
-    "test": "docpad generate --silent --env static",
+    "test": "docpad generate --silent --env static && postcss --use autoprefixer -o ./out/styles/style.css ./out/styles/style.css",
     "info": "docpad info --silent",
     "deploy": "surge --project ./out --domain http://playbook.mangrove.io",
     "deploy:staging": "surge --project ./out --domain https://nosy-toy.surge.sh",
