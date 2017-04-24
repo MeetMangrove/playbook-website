@@ -1,4 +1,4 @@
-# [Mangrove Playbook's Website](https://playbook.mangrove.io), built with [DocPad](https://docpad.org)
+# [Mangrove Playbook's Website](http://playbook.mangrove.io), built with [DocPad](https://docpad.org)
 
 <!-- BADGES/ -->
 
