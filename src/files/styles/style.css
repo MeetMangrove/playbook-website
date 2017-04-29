@@ -25,7 +25,7 @@ standalone: true
 
 	--barSize: 5rem;
 	--barContentSize: 2rem;
-	--paddingSize: 3rem;
+	--paddingSize: 5rem;
 	--marginSize: 2rem;
 	--sidebarSize: 300px;
 	--fontMainSpacing: 0.02em;
@@ -101,15 +101,18 @@ a:hover, .link:hover {
 
 /* misc */
 blockquote {
-	margin: 3em;
-	color: var(--accentColor);
+	margin-bottom: 2em;
+	background: #f7f7f7;
+	padding: 2% 6%;
+	border-radius: 6px;
+	margin-left: 0;
 }
 blockquote em {
 	font-style: italic;
 }
 em {
 	font-style: italic;
-	color: var(--accentColor);
+	color: var(--colorGrey3);
 }
 nav,
 nav li {
@@ -201,9 +204,11 @@ html, body, div, nav, section, aside, article {
 	margin-top: calc((var(--barSize) - var(--barContentSize)) / 2);
 	margin-left: var(--paddingSize);
 }
-.topbar .primary:hover .text,
-.topbar .secondary:hover {
-	text-decoration: underline;
+.topbar .primary:hover{
+	text-decoration: none!important;
+}
+.topbar a:hover .text{
+	text-decoration: none!important;
 }
 .topbar .logo {
 	height: 0.6em;
@@ -215,6 +220,10 @@ html, body, div, nav, section, aside, article {
 .topbar a.secondary {
 	font-size: 0.6em;
 	margin-left: 3%;
+}
+
+.topbar span:hover{
+		text-decoration: none!important;
 }
 
 .topbar .search * {
@@ -337,6 +346,19 @@ input.gsc-search-button {
 	border-radius: 3px;
 }
 
+.list-menu-projects h3{
+	font-family: var(--headingFont);
+}
+
+.list-menu-projects h4{
+	font-family: var(--bodyFont);
+}
+
+.list-menu-projects a:hover{
+	text-decoration: none;
+	color: var(--colorRed);
+}
+
 
 /* ====================================
    Error */
@@ -392,11 +414,15 @@ article:not(.docs) {
 .block-header {
 	padding: calc(var(--barSize) / 2) 0;
 	text-align: center;
+	margin-bottom: -1em;
 }
 .block-header h1 {
 	margin-bottom: 0.4em;
 	line-height: 1.1em;
 	color: var(--accentColor);
+}
+.block-header a:hover {
+	text-decoration: none;
 }
 .block-header h2 {
 	margin: 0 auto;
@@ -409,23 +435,41 @@ article:not(.docs) {
 	overflow-y: auto;
 	padding-bottom: 5em;
 }
+}
+.block-content li{
+	padding: 0.5em 0em;
+}
+.block-content a{
+	color: var(--colorRed);
+}
+.block-content h3{
+	margin-top: 3em;
+}
 .block-footer {
 	margin: 1em 0;
 }
 .block-edit a {
-	position: absolute;
-	bottom: 7em;
-	right: 1em;
-	border: 1px solid var(--colorGrey4);
-	border-radius: 1em;
-	padding: 0.5em 1em;
-	color: var(--colorGrey4) !important;
+		position: absolute;
+		bottom: 8em;
+		right: 2em;
+		border: 1px dotted var(--colorGrey3);
+		border-radius: 1em;
+		padding: 0.5em 1em;
+		color: var(--colorGrey3) !important;
+		font-size: 0.9em;
 }
 
 .prev-next {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-areas: "prev next";
+}
+.prev-next a:hover{
+	text-decoration: none!important;
+	font-family: var(--headingFont);
+}
+.prev-next .title:hover{
+	text-decoration: none!important;
 }
 .prev {
 	grid-area: prev;
@@ -447,7 +491,6 @@ article:not(.docs) {
 .prev:hover .title,
 .up:hover .title,
 .next:hover .title {
-	text-decoration: underline;
 }
 .prev-next .icon {
 	display: block;
@@ -455,7 +498,7 @@ article:not(.docs) {
 
 .block-content {
 	background: var(--contentBackground);
-	border-radius: 1em;
+	border-radius: 0.5em;
 }
 
 /* fix for anchor links */
@@ -473,6 +516,7 @@ article:not(.docs) {
 .block table,
 .block img {
 	max-width: 100%;
+	padding: 2em 4em;
 }
 
 
