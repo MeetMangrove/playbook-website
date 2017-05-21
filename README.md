@@ -2,7 +2,7 @@
 
 <!-- BADGES/ -->
 
-<span class="badge-travisci"><a href="http://travis-ci.org/meetmangrove/playbook-website" title="Check this project's build status on TravisCI"><img src="https://img.shields.io/travis/meetmangrove/playbook-website/master.svg" alt="Travis CI Build Status" /></a></span>
+<span class="badge-travisci"><a href="http://travis-ci.org/MeetMangrove/playbook-website" title="Check this project's build status on TravisCI"><img src="https://img.shields.io/travis/MeetMangrove/playbook-website/master.svg" alt="Travis CI Build Status" /></a></span>
 
 <!-- /BADGES -->
 
