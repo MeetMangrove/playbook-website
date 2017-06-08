@@ -1,4 +1,5 @@
-# robotstxt.org/
+# robotstxt.org
+# Environments: <%- @getEnvironments().join(', ') %>
 
 User-agent: *
 
