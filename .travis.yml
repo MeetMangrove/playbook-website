@@ -4,7 +4,7 @@
 sudo: false
 language: node_js
 node_js:
-  - "7"     # stable
+  - "8"     # stable
 cache:
   directories:
     - "$HOME/.npm"
