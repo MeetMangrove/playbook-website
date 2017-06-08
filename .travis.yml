@@ -10,7 +10,6 @@ cache:
     - "$HOME/.npm"
     - "$HOME/.yarn-cache"
 install:
-  - npm install --only=prod
-  - npm install --only=dev
+  - npm --production=false install
 after_success:
   - eval "$(curl -s https://raw.githubusercontent.com/balupton/awesome-travis/master/scripts/deploy-custom.bash)"
