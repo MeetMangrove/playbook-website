@@ -3,4 +3,4 @@
 
 User-agent: *
 
-<%- if "production" not in @getEnvironments() then "Disallow: /" else "" %>
+<%- if "development" in @getEnvironments() then "Disallow: /" else "" %>
