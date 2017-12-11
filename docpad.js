@@ -116,11 +116,17 @@ helpers({
 					welcome: {
 						title: 'Welcome to Playbook'
 					},
-					rules: {
-						title: 'The Rules'
+					life_in_mangrove: {
+						title: 'Your Life in Mangrove'
 					},
-					how: {
-						title: "How To's"
+					membership: {
+						title: "Membership"
+					},
+					building_mangrove: {
+						title: "Building Mangrove"
+					},
+					important_agreements: {
+						title: "Important Agreements"
 					}
 				}
 			}
