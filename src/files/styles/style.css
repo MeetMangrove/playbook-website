@@ -2,14 +2,14 @@
 standalone: true
 ***/
 
-@font-face {
-  font-family: 'proximasemibold';
-  src: url('/vendor/proximanova-semibold-webfont.ttf')  format('truetype');
-}
+@import url("https://rsms.me/inter/inter-ui.css");
 
 @font-face {
-  font-family: 'proximaregular';
-  src: url('/vendor/proximanova-regular-webfont.ttf')  format('truetype');
+  font-family: 'interuisemibold';
+  font-style:  normal;
+  font-weight: 500;
+  src: url("vendor/Inter-UI-Medium.woff2") format("woff2"),
+       url("vendor/Inter-UI-Medium.woff") format("woff");
 }
 
 :root {
@@ -30,13 +30,13 @@ standalone: true
 	--sidebarSize: 300px;
 	--fontMainSpacing: 0.02em;
 
-	--bodyFont: "proximaregular", Helvetica, Arial, sans-serif;
+	--bodyFont: "Inter UI", Helvetica, Arial, sans-serif;
 	--bodyBackground: var(--colorGrey1);
 	--bodyColor: var(--colorDark);
 
 	--contentBackground: var(--colorLight);
 
-	--headingFont: "proximasemibold", Helvetica, Arial, sans-serif;
+	--headingFont: "interuisemibold", Helvetica, Arial, sans-serif;
 	--headingFontLight: var(--bodyFont);
 
 	--menuBackground: var(--colorRed);
