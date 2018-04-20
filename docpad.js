@@ -122,8 +122,8 @@ helpers({
 					membership: {
 						title: "Membership"
 					},
-					building_mangrove: {
-						title: "Building Mangrove"
+					doing_work_in_mangrove: {
+						title: "Doing Work In Mangrove"
 					},
 					important_agreements: {
 						title: "Important Agreements"
