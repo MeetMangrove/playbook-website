@@ -116,8 +116,8 @@ helpers({
 					welcome: {
 						title: 'Welcome to Playbook'
 					},
-					life_in_mangrove: {
-						title: 'Your Life in Mangrove'
+					how_we_grow_together: {
+						title: 'How We Grow Together'
 					},
 					membership: {
 						title: "Membership"
