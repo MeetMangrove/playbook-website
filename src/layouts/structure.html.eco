@@ -8,7 +8,7 @@ layout: default
 			<img class="logo" src="/images/mangrove-logo-white.png" alt="Mangrove" />
 			<span class="text">Playbook</span>
 		</a>
-		<a class="secondary" href="https://mangrove.io">Back to Mangrove</a>
+		<a class="secondary" href="https://www.mangrove.io">Back to Mangrove</a>
 	</div>
 	<%- @renderGoogleSearch() %>
 </div>
