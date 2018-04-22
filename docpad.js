@@ -124,9 +124,6 @@ helpers({
 					},
 					collaborating_in_mangrove: {
 						title: "Collaborating In Mangrove"
-					},
-					important_agreements: {
-						title: "Important Agreements"
 					}
 				}
 			}
